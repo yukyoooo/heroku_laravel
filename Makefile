@@ -1,5 +1,7 @@
 up:
 	docker-compose up -d
+serve:
+	docker-compose exec app php artisan serve
 build:
 	docker-compose build --no-cache --force-rm
 laravel-install:
