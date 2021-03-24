@@ -83,4 +83,41 @@ composer require barryvdh/laravel-debugbar
 ```
 - エラーメッセージの日本語化
 
-## 
+## モデル(model)DBとやりとり
+- DBとのやりとりをPHPで書ける
+`php artisan make:model Models/Test`
+`php artisan make:model Models/Test -mc`
+    - migrationとコントローラーファイルをまとめて作成可能
+
+## Migration
+- DBテーブルの履歴管理
+1. `php artisan make:migration create_tests_table`
+2. テーブル内容を構成
+3. `php artisan migrate`で生成
+- モデルは単数形、マイグレーションは複数形
+
+## laravel tinker
+- DBと簡単につながる仕組み
+```php:php artisan tinker
+$test = new App\Models\Test;
+$test->text = "aaa";
+$test->save();
+App\Models\Test::all();
+```
+
+## コントローラー(処理)
+`php artisan make:controller TestController`
+- ファイル名のあとにcontrollerをつける
+- app/Http/Controllers/TestController.php
+
+## MVCモデル記述方法
+1. routeのweb.phpで`Route::get('tests/test', [TestController::class, 'index']);`を記述すると、tests/testにアクセスがきたらtestControllerのindexを実行
+2. TestController.phpでviewの接続先を設定
+```php
+public function index()
+    {
+        return view('tests.test');
+    }
+```
+3. viewを作成する
+4. tests/testにアクセスする

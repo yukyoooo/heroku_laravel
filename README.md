@@ -1,8 +1,8 @@
 ## 接続先
 [locahost](http://localhost:8080/)
 - php artisan serve
-## ディレクトリパス
-cd /home/moriyama/999_note/99_etc/Udemy_phpToLaravel_20210129/task_test/backend/laravel-lessen
+## ファイル保存出来ない時
+`sudo chown moriyama ファイル名`
 ## 参考サイト
 [最強のLaravel開発環境をDockerを使って構築する](https://qiita.com/ucan-lab/items/5fc1281cd8076c8ac9f4)
 [laraveにreactを導入](https://qiita.com/10mi8o/items/b435ef7fb838a40058c5)
