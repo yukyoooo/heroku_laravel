@@ -5,11 +5,14 @@ const GlobalNav = () => {
     return(
         <nav>
             <ul>
-                <Link to="/">
+                <Link to="/top">
                     <li>Top</li>
                 </Link>
                 <Link to="/about">
                     <li>About</li>
+                </Link>
+                <Link to="/main">
+                    <li>Main</li>
                 </Link>
             </ul>
         </nav>

@@ -7,6 +7,13 @@ cd /home/moriyama/999_note/99_etc/Udemy_phpToLaravel_20210129/task_test/backend/
 [最強のLaravel開発環境をDockerを使って構築する](https://qiita.com/ucan-lab/items/5fc1281cd8076c8ac9f4)
 [laraveにreactを導入](https://qiita.com/10mi8o/items/b435ef7fb838a40058c5)
 
+## 学習ロードマップ
+- [react学習](https://qiita.com/m-oishi/items/6264fd2765736d874f9d)
+
+## phpバージョン変更コマンド
+```
+sudo update-alternatives --config php
+```    
 --------------------------------------------------------------
 # docker-laravel 🐳
 
