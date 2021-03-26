@@ -95,6 +95,11 @@ composer require barryvdh/laravel-debugbar
 2. テーブル内容を構成
 3. `php artisan migrate`で生成
 - モデルは単数形、マイグレーションは複数形
+- 既存のテーブルに追加する場合
+    `php artisan make:migration add_votes_to_users_table --table=users`
+- `php artisan migrate:status` :migrateファイルの確認
+- `php artisan migrate:rollback` :1個前に戻る
+- `php artisan migrate` を実行すると取消多分すべて再度実行
 
 ## laravel tinker
 - DBと簡単につながる仕組み
@@ -121,3 +126,68 @@ public function index()
 ```
 3. viewを作成する
 4. tests/testにアクセスする
+
+## ヘルパ関数
+- よく使うヘルパ関数
+    - route, auth, app, bcrypt, collect, dd, env, factory, old, view, など
+
+## コレクション
+- データベースからデータ取得時はコレクション型になっている
+    - コレクション型関数多数、メソッドチェーンで記述可能
+        - all, chunk, get, pluck, whereIn, toArray
+`$values = Test::all();`
+## クエリビルダ
+- データベースアクセスをSQLではなくPHP構文でかける
+- collectionの使い分け、
+    - 簡単にデータ取得はコレクション、細かい条件を指定する場合はクエリビルダ
+`$tests = DB::table('tests')->select('id')->get();`
+
+## ファサード
+- 入口
+- select, where, groupbyなどsqlに近い構文
+- config/app.phpのproviderとaliasesに設定している
+- `use Illuminate\Support\Facades\@@:`で使えるようになる
+
+## laravel起動処理DIとサービスコンテナ
+- [参考資料](https://qiita.com/namizatork/items/801da1d03dc322fad70c)
+- public/index.phpが最初にアクセスされるファイル
+- 
+
+## blade
+- {{}}記法はXSS攻撃を防ぐhtmlspecialchar関数を通している
+- @csrfを書くことで対策可能
+- レイアウト分割
+    - @extends('layouts.app')で呼び出し可能
+
+## フロントエンド
+- node(パッケージ管理:), webpack(バンドル:複数を1つに), bablel(コンパイル:読み込めるがたに変換)
+- laravelのフロントエンド
+    - laravel-ui:bootstrap
+    - laravel-mix:webpackのラッパー
+    - webpack.mix.js:laravel-mixの設定ファイル
+        ```js
+        mix.js('resources/js/app.js', 'public/js')
+        .react()
+        .sass('resources/sass/app.scss', 'public/css');
+        ```
+    - Node.js/npm:別途インストール
+    - package.json:設定管理ファイル
+
+## laravel-uiと認証
+- マニュアルのフロントエンド/スカフォールド
+- laravel-uiのインストール
+    - `composer require laravel/ui:^1.0 --dev`
+- フロントエンド選択
+    - `php artisan ui react --auth`
+    - `npm install && npm run dev`
+    - app/http/authとuser.phpにauth関連ファイルが生成される
+
+## エラーメッセージ日本語化
+
+## routeの確認
+`php artisan route:list > route.txt`
+
+### 簡易アプリ制作
+1. modelとmigration作成
+2. controllerの作成 --resource追加するとREST構文がはいる
+3. route設定
