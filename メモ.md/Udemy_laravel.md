@@ -191,3 +191,4 @@ public function index()
 1. modelとmigration作成
 2. controllerの作成 --resource追加するとREST構文がはいる
 3. route設定
+4. view作成

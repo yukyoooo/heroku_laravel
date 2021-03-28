@@ -26,6 +26,11 @@ Route::get('tests/test', [TestController::class, 'index']);
 
 Route::middleware(['auth'])->prefix('contact')->group(function () {
     Route::get('/index', [ContactFormController::class, 'index'])->name('contact.index');
+    Route::get('/create', [ContactFormController::class, 'create'])->name('contact.create');
+    Route::post('/store', [ContactFormController::class, 'store'])->name('contact.store');
+    Route::get('/show/{id}', [ContactFormController::class, 'show'])->name('contact.show');
+    Route::get('/edit/{id}', [ContactFormController::class, 'edit'])->name('contact.edit');
+    Route::get('/update/{id}', [ContactFormController::class, 'update'])->name('contact.update');
 });
 
 
@@ -33,6 +38,6 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-// Route::get('/{any}', function(){
-//     return view('app');
-// })->where('any', '.*'); //補足：.*は、正規表現で0文字以上の任意の文字列を意味する
+Route::get('/{any}', function(){
+    return view('app');
+})->where('any', '.*'); //補足：.*は、正規表現で0文字以上の任意の文字列を意味する
