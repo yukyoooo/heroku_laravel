@@ -16,10 +16,15 @@
 
                     indexです!
 
-
-                    <button type ="submit" class="btn btn-primary">
-                        <a class="text-light" href="{{ route('contact.create') }}">新規登録</a>
-                    </button>
+                    <form method="GET" action="{{ route('contact.create') }}">
+                        <button type ="submit" class="btn btn-primary">
+                            新規登録
+                        </button>
+                    </form>
+                    <form method="GET" action="{{ route('contact.index') }}" class="form-inline my-2 my-lg-0">
+                        <input class="form-control mr-sm-2" name="search" type="search" placeholder="Search" aria-label="Search">
+                        <button class="btn btn-outline-success" type="submit">検索する</button>
+                    </form>
 
 
 
@@ -45,6 +50,7 @@
                         @endforeach
                     </tbody>
                     </table>
+                    {{ $contacts->links() }}
                 </div>
             </div>
         </div>

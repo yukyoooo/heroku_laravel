@@ -192,3 +192,78 @@ public function index()
 2. controllerの作成 --resource追加するとREST構文がはいる
 3. route設定
 4. view作成
+
+## バリデーション
+`php artisan make:request StoreContactForm`
+app\Http\request\StoreContactForm.php
+- authorizeをtrueに
+- コントローラーでuseする
+`use App\Http\Requests\StoreContactForm;`
+- storeの引数を書き換える
+`public function store(StoreContactForm $request)`
+- viewにエラー表示内容を記述
+```php
+@if ($errors->any())
+<div class="alert alert-danger">
+    <ul>
+        @foreach ($errors->all() as $error)
+            <li>{{ $error }}</li>
+        @endforeach
+    </ul>
+</div>
+@endif
+```
+
+## seeder
+`php artisan make:seeder UsersTableSeeder`
+database\seeders\UsersTableSeeder.phpに記述
+- table毎に書く必要がある
+```
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Str;
+...
+
+DB::table('users')->insert([
+            'name' => 'ああああああ',
+            'email' => 'test@test.com',
+            'password' => Hash::make('password123'),
+        ],[
+            'name' => str::random(10),
+            'email' => 'test2@test.com',
+            'password' => Hash::make('password123'),
+        ])
+```
+- DatabaseSeeder.phpに下記を加える
+`$this->call(UsersTableSeeder::class);`
+- composer autoloadを実行
+`composer dump-autoload`
+- seedを実行
+`php artisan db:seed`
+`php artisan migrate:refresh --seed` DBリセットとseed実行の場合
+- 
+
+## seed factory 大量データ生成
+`php artisan make:factory ContactFormFactory`
+- app/config/app 100行目
+`faker_locale' => 'ja_JP',`
+- 生成されたファクトリファイルで下記のように追記
+```
+return [
+            //
+            'your_name' => $this->faker->name,
+            'title' => $this->faker->realText(50),
+            'email' => $this->faker->unique()->email,
+            'url' => $this->faker->url,
+            'gender' => $this->faker->randomElement(['0', '1']),
+            'age' => $this->faker->numberBetween($min = 1, $max=6),
+            'contact' => $this->faker->realText(200),
+        ];
+```
+- seeder作成
+`php artisan make:seeder ContactFormSeeder`
+- 生成されたファイルにfactoryを追記
+`factory(ContactForm::class, 200)->create();`
+`use App\Models\ContactForm;`
+
+
