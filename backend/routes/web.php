@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ShopController;
 use App\Http\Controllers\TestController;
 use App\Http\Controllers\ContactFormController;
 use Illuminate\Support\Facades\Route;
@@ -18,11 +19,13 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-
+Route::get('shops/index', [ShopController::class, 'index']);
 Route::get('tests/test', [TestController::class, 'index']);
 // Route::get('tests/test', function() {
 //     return view('tests/test');
 // });
+
+
 
 Route::middleware(['auth'])->prefix('contact')->group(function () {
     Route::get('/index', [ContactFormController::class, 'index'])->name('contact.index');

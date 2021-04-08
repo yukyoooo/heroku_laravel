@@ -14,7 +14,7 @@ class TestController extends Controller
         // $values = DB::table('tests')->get();
         $values = Test::all();
         $tests = DB::table('tests')->select('id')->get();
-        // dd($tests);
+        dd($tests);
         return view('tests.test', compact('values'));
     }
 }
