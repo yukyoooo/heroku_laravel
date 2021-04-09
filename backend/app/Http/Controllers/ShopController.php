@@ -23,5 +23,6 @@ class ShopController extends Controller
         $shop_route = Shop::find(1)->routes()->get();
         dd($shop_route);
 
+
     }
 }
