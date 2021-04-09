@@ -22,5 +22,6 @@ class ShopController extends Controller
         //多：多
         $shop_route = Shop::find(1)->routes()->get();
         dd($shop_route);
+
     }
 }
