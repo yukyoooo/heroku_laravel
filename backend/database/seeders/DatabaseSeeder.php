@@ -19,6 +19,8 @@ class DatabaseSeeder extends Seeder
             ContactFormSeeder::class,
             AreaSeeder::class,
             ShopSeeder::class,
+            RouteSeeder::class,
+            RouteShopSeeder::class,
         ]);
 
     }
