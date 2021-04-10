@@ -1,7 +1,5 @@
 {
     "require": {
-        "laravel/ui": "^3.2" ,  
-        "php": "^7.3|^8.0",
-        "ext-intl": "*",
+        "laravel/ui": "^3.2"
     }
 }
