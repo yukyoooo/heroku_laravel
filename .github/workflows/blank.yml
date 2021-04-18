@@ -10,10 +10,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
 
-      - name: Public IP
-        id: ip
-        uses: haythem/public-ip@v1
-
       - uses: actions/checkout@v2
       - name: Deploy
         env:
