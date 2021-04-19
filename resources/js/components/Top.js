@@ -43,7 +43,7 @@ class Top extends React.Component{
         return(
             <div>
                 <h2>{text}</h2>
-                <p>こんにちは、{this.state.name}さん！</p>
+                <p>こんにちは、{this.state.name}さん！よろしく！！！</p>
                 {/* setState:プロパティを変更する関数 */}
                 <button onClick={ ()=> {this.setState({name:'ひつじ仙人'})}}>ひつじ仙人</button>
                 <button onClick={ ()=> {this.setState({name:'にんじゃわんこ'})}}>にんじゃわんこ</button>
