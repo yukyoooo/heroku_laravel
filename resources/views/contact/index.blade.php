@@ -14,7 +14,7 @@
                         </div>
                     @endif
 
-                    indexです!
+                    indexです!!!!!!!!!!!!!!!!!!!!!!!!!
 
                     <form method="GET" action="{{ route('contact.create') }}">
                         <button type ="submit" class="btn btn-primary">
