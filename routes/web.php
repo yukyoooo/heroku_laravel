@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ShopController;
 use App\Http\Controllers\TestController;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\ContactFormController;
 use Illuminate\Support\Facades\Route;
 
@@ -26,6 +27,13 @@ Route::get('tests/test', [TestController::class, 'index']);
 // });
 
 
+Route::get('bookapp/user', [UserController::class, 'user'])->name('bookapp.user.user');
+Route::middleware(['auth'])->prefix('bookapp')->group(function () {
+    Route::get('/user/mypage', [UserController::class, 'index'])->name('bookapp.user.index');
+    Route::get('/user/edit/{id}', [UserController::class, 'edit'])->name('bookapp.user.edit');
+    Route::post('/user/update/{id}', [UserController::class, 'update'])->name('bookapp.user.update');
+
+});
 
 Route::middleware(['auth'])->prefix('contact')->group(function () {
     Route::get('/index', [ContactFormController::class, 'index'])->name('contact.index');

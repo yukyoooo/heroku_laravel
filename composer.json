@@ -10,6 +10,7 @@
     "require": {
         "php": "^7.3|^8.0",
         "ext-intl": "*",
+        "barryvdh/laravel-debugbar": "^3.5",
         "doctrine/dbal": "^2",
         "fideloper/proxy": "^4.4",
         "fruitcake/laravel-cors": "^2.0",
@@ -19,7 +20,6 @@
         "laravel/tinker": "^2.5"
     },
     "require-dev": {
-        "barryvdh/laravel-debugbar": "^3.5",
         "barryvdh/laravel-ide-helper": "^2.9",
         "beyondcode/laravel-dump-server": "^1.7",
         "facade/ignition": "^2.5",
