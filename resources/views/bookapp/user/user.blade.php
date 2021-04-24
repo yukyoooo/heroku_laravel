@@ -3,7 +3,7 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-8">
+        <div class="col-12">
             <div class="card">
                 <div class="card-header">{{ __('Dashboard') }}</div>
 
@@ -27,6 +27,8 @@
                         <th scope="co3">一番好きな本</th>
                         <th scope="co4">次に好きな本</th>
                         <th scope="co5">お気に入りの本</th>
+                        <th scope="co6">詳細</th>
+
                         </tr>
                     </thead>
                     <tbody>
@@ -37,6 +39,12 @@
                             <td>{{ $user->favorite_book }}</td>
                             <td>{{ $user->favorite_book2 }}</td>
                             <td>{{ $user->favorite_book3 }}</td>
+                            <td>
+                                <form method="GET" action="{{ route('bookapp.user.show', ['id' => $user->id ]) }}">
+                                @csrf
+                                    <input class="btn btn-info" type="submit" value="詳細を見る">
+                                </form>
+                            </td>
                         </tr>
                         @endforeach
                     </tbody>

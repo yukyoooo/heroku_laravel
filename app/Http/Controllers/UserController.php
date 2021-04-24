@@ -5,15 +5,17 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
+use App\Models\User;
+
 
 
 class UserController extends Controller
 {
-    public function user(Request $request)
+    public function members(Request $request)
     {
 
         $query = DB::table('users');
-        $query->select('name', 'introduction', 'favorite_book', 'favorite_book2','favorite_book3','created_at');
+        $query->select('id','name', 'introduction', 'favorite_book', 'favorite_book2','favorite_book3','created_at');
         $query->orderBy('created_at', 'asc');
         $users = $query->paginate(20);
 
@@ -39,6 +41,12 @@ class UserController extends Controller
         $user = Auth::user();
         $user->fill($user_form)->save();
         return view('bookapp.user.index',compact('user'));
+    }
+
+    public function show($id)
+    {
+        $member= User::find($id);
+        return view('bookapp.user.show', compact('member'));
     }
 
 }

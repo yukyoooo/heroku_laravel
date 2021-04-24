@@ -21,6 +21,7 @@ class DatabaseSeeder extends Seeder
             ShopSeeder::class,
             RouteSeeder::class,
             RouteShopSeeder::class,
+            BookAppSeeder::class,
         ]);
 
     }

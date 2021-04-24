@@ -1,8 +1,8 @@
 <?php
 
-use App\Http\Controllers\ShopController;
-use App\Http\Controllers\TestController;
+
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\SlideController;
 use App\Http\Controllers\ContactFormController;
 use Illuminate\Support\Facades\Route;
 
@@ -17,22 +17,18 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get('/', [SlideController::class, 'index'])->name('bookapp.slide.index');
+Route::middleware(['auth'])->group(function () {
+    Route::get('/create', [SlideController::class, 'create'])->name('bookapp.slide.create');
+    Route::get('/store', [SlideController::class, 'store'])->name('bookapp.slide.store');
 });
-Route::get('shops/index', [ShopController::class, 'index']);
-Route::get('tests/test', [TestController::class, 'index']);
-// Route::get('tests/test', function() {
-//     return view('tests/test');
-// });
 
-
-Route::get('bookapp/user', [UserController::class, 'user'])->name('bookapp.user.user');
-Route::middleware(['auth'])->prefix('bookapp')->group(function () {
-    Route::get('/user/mypage', [UserController::class, 'index'])->name('bookapp.user.index');
-    Route::get('/user/edit/{id}', [UserController::class, 'edit'])->name('bookapp.user.edit');
-    Route::post('/user/update/{id}', [UserController::class, 'update'])->name('bookapp.user.update');
-
+Route::get('members', [UserController::class, 'members'])->name('bookapp.user.user');
+Route::get('members/{id}', [UserController::class, 'show'])->name('bookapp.user.show');
+Route::middleware(['auth'])->prefix('mypage')->group(function () {
+    Route::get('/', [UserController::class, 'index'])->name('bookapp.user.index');
+    Route::get('/edit/{id}', [UserController::class, 'edit'])->name('bookapp.user.edit');
+    Route::post('/update/{id}', [UserController::class, 'update'])->name('bookapp.user.update');
 });
 
 Route::middleware(['auth'])->prefix('contact')->group(function () {
