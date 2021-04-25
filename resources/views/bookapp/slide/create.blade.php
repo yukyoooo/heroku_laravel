@@ -20,10 +20,10 @@
                     <form method="POST" action="{{ route('bookapp.slide.store') }}">
                     @csrf
                         タイトル
-                        <input type="text" name="boob_title">
+                        <input type="text" name="book_title">
                         <br>
                         紹介内容
-                        <textarea name="introduction"></textarea>
+                        <textarea name="book_detail"></textarea>
                         <br>
                         作成者
                         <select name="member">

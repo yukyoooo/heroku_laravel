@@ -45,4 +45,11 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public $timestamps = false;
+
+    public function bookApp()
+    {
+        return $this->hasMany('App\Models\bookApp');
+    }
 }

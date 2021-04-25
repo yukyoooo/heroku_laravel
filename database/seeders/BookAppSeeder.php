@@ -15,7 +15,7 @@ class BookAppSeeder extends Seeder
      */
     public function run()
     {
-        Slide::factory()->count(200)->create();
+        Slide::factory()->count(20)->create();
 
     }
 }

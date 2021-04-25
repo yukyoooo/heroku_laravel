@@ -26,6 +26,7 @@ class SlideFactory extends Factory
         return [
             'book_title' => Str::random(10),
             'book_detail' => Str::random(300),
+            'user_id' => $this->faker->numberBetween($min = 1, $max=3),
         ];
     }
 }

@@ -18,17 +18,17 @@
                     @endif
 
                         <tr>
-                            <th scope="row">{{ $slide->id }}</th>
-                            <td> {{ $slide->book_title }}</td>
-                            <td>{{ $slide->book_detail }}</td>
-                            <td>{{ $slide->created_at }}</td>
+                            title: <td> {{ $slide->book_title }}</td><br>
+                            details: <td>{{ $slide->book_detail }}</td><br>
+                            created_at: <td>{{ $slide->created_at }}</td><br>
+                            author: <td>{{ $slide->user->name }}</td><br>
                         </tr>
                     </table>
                 </div>
             </div>
         </div>
         @endforeach
-        {{ $slides->links() }}
+        {{  $slides->links() }}
     </div>
 </div>
 @endsection

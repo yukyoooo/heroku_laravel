@@ -20,7 +20,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [SlideController::class, 'index'])->name('bookapp.slide.index');
 Route::middleware(['auth'])->group(function () {
     Route::get('/create', [SlideController::class, 'create'])->name('bookapp.slide.create');
-    Route::get('/store', [SlideController::class, 'store'])->name('bookapp.slide.store');
+    Route::post('/store', [SlideController::class, 'store'])->name('bookapp.slide.store');
 });
 
 Route::get('members', [UserController::class, 'members'])->name('bookapp.user.user');
@@ -44,7 +44,7 @@ Route::middleware(['auth'])->prefix('contact')->group(function () {
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [SlideController::class, 'index'])->name('bookapp.slide.index');
 
 Route::get('/{any}', function(){
     return view('app');
