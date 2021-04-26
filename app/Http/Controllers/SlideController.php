@@ -37,4 +37,35 @@ class SlideController extends Controller
         $slide->save();
         return redirect('/');
     }
+
+    public function show($id)
+    {
+        $slide = bookApp::with('user')->find($id);
+        // dd($slide->user->name);
+        return view('bookapp.slide.show', compact('slide'));
+    }
+
+    public function edit($id)
+    {
+        //
+        $slide = bookApp::with('user')->find($id);
+        return view('bookapp.slide.edit', compact('slide'));
+    }
+
+
+    public function update(Request $request, $id)
+    {
+        $slide = bookApp::find($id);
+        $slide->book_title = $request->book_title;
+        $slide->book_detail = $request->book_detail;
+        $slide->save();
+        return redirect('/');
+    }
+
+    public function destroy($id)
+    {
+        $slide = bookApp::find($id);
+        $slide->delete();
+        return redirect('/');
+    }
 }

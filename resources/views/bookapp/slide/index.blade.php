@@ -22,6 +22,7 @@
                             details: <td>{{ $slide->book_detail }}</td><br>
                             created_at: <td>{{ $slide->created_at }}</td><br>
                             author: <td>{{ $slide->user->name }}</td><br>
+                            <td><a href="{{ route('bookapp.slide.show', ['id' => $slide->id ]) }}">詳細</a></td>
                         </tr>
                     </table>
                 </div>
