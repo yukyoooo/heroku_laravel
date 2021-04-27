@@ -4,6 +4,7 @@
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\SlideController;
 use App\Http\Controllers\ContactFormController;
+use App\Http\Controllers\CommentsController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -21,7 +22,13 @@ Route::get('/', [SlideController::class, 'index'])->name('bookapp.slide.index');
 Route::middleware(['auth'])->group(function () {
     Route::get('/create', [SlideController::class, 'create'])->name('bookapp.slide.create');
     Route::post('/store', [SlideController::class, 'store'])->name('bookapp.slide.store');
+    Route::get('/show/{id}', [SlideController::class, 'show'])->name('bookapp.slide.show');
+    Route::get('/edit/{id}', [SlideController::class, 'edit'])->name('bookapp.slide.edit');
+    Route::post('/update/{id}', [SlideController::class, 'update'])->name('bookapp.slide.update');
+    Route::post('/destroy/{id}', [SlideController::class, 'destroy'])->name('bookapp.slide.destroy');
 });
+
+Route::post('comment', [CommentsController::class, 'store'])->name('comment.store');
 
 Route::get('members', [UserController::class, 'members'])->name('bookapp.user.user');
 Route::get('members/{id}', [UserController::class, 'show'])->name('bookapp.user.show');

@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\bookApp;
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
+
 
 class SlideController extends Controller
 {
@@ -41,8 +43,9 @@ class SlideController extends Controller
     public function show($id)
     {
         $slide = bookApp::with('user')->find($id);
-        // dd($slide->user->name);
-        return view('bookapp.slide.show', compact('slide'));
+        $login_user = Auth::user();
+        // dd($slide->id);
+        return view('bookapp.slide.show', compact('slide', 'login_user'));
     }
 
     public function edit($id)
