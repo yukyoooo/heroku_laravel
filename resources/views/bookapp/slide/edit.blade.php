@@ -17,8 +17,10 @@
                     スライド修正ページ
 
 
-                    <form method="POST" action="{{ route('bookapp.slide.update', ['id' => $slide->id ]) }}">
+                    <form method="POST" action="{{ route('bookapp.slide.update', ['id' => $slide->id ]) }}"enctype="multipart/form-data">
                     @csrf
+                        <input type="file" name="image">
+                        bookimg: <img src="{{ $slide->image_path }}" width="60">
                         タイトル
                         <input type="text" name="book_title" value="{{ $slide->book_title }}">
                         <br>

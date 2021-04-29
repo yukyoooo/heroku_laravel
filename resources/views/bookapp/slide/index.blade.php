@@ -18,6 +18,7 @@
                     @endif
 
                         <tr>
+                            bookimg: <img src="{{ $slide->image_path }}"width="60">
                             title: <td> {{ $slide->book_title }}</td><br>
                             details: <td>{{ $slide->book_detail }}</td><br>
                             created_at: <td>{{ $slide->created_at }}</td><br>

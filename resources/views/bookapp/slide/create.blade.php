@@ -17,8 +17,10 @@
                     スライド登録ページ
 
 
-                    <form method="POST" action="{{ route('bookapp.slide.store') }}">
+                    <form method="POST"  action="{{ route('bookapp.slide.store') }}" enctype="multipart/form-data">
                     @csrf
+                        <!-- アップロードフォームの作成 -->
+                        <input type="file" name="image">
                         タイトル
                         <input type="text" name="book_title">
                         <br>

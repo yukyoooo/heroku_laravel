@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\DB;
 use App\Models\bookApp;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 
 class SlideController extends Controller
@@ -36,6 +37,14 @@ class SlideController extends Controller
         $slide->user_id = $request->member;
         $slide->book_title = $request->book_title;
         $slide->book_detail = $request->book_detail;
+        // dd($request->all());
+        //s3アップロード開始
+        $image = $request->file('image');
+        // バケットの`myprefix`フォルダへアップロード
+        $path = Storage::disk('s3')->put('bookapp/bookimg', $image, 'public');
+        // アップロードした画像のフルパスを取得
+        $slide->image_path = Storage::disk('s3')->url($path);
+        // dd($slide);
         $slide->save();
         return redirect('/');
     }
@@ -61,6 +70,10 @@ class SlideController extends Controller
         $slide = bookApp::find($id);
         $slide->book_title = $request->book_title;
         $slide->book_detail = $request->book_detail;
+        $image = $request->file('image');
+        // dd($image);
+        $path = Storage::disk('s3')->put('bookapp/bookimg', $image, 'public');
+        $slide->image_path = Storage::disk('s3')->url($path);
         $slide->save();
         return redirect('/');
     }

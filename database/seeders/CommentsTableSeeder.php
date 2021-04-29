@@ -3,6 +3,8 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use App\Models\Comment;
+
 
 class CommentsTableSeeder extends Seeder
 {
@@ -13,14 +15,6 @@ class CommentsTableSeeder extends Seeder
      */
     public function run()
     {
-        [
-            'comment' => '山手線',
-        ],
-        [
-            'comment' => '京浜東北線',
-        ],
-        [
-            'comment' => '東武東上線',
-        ],
+        Comment::factory()->count(200)->create();
     }
 }

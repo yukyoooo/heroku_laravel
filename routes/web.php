@@ -19,10 +19,10 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [SlideController::class, 'index'])->name('bookapp.slide.index');
+Route::get('/show/{id}', [SlideController::class, 'show'])->name('bookapp.slide.show');
 Route::middleware(['auth'])->group(function () {
     Route::get('/create', [SlideController::class, 'create'])->name('bookapp.slide.create');
     Route::post('/store', [SlideController::class, 'store'])->name('bookapp.slide.store');
-    Route::get('/show/{id}', [SlideController::class, 'show'])->name('bookapp.slide.show');
     Route::get('/edit/{id}', [SlideController::class, 'edit'])->name('bookapp.slide.edit');
     Route::post('/update/{id}', [SlideController::class, 'update'])->name('bookapp.slide.update');
     Route::post('/destroy/{id}', [SlideController::class, 'destroy'])->name('bookapp.slide.destroy');
@@ -51,7 +51,7 @@ Route::middleware(['auth'])->prefix('contact')->group(function () {
 
 Auth::routes();
 
-Route::get('/home', [SlideController::class, 'index'])->name('bookapp.slide.index');
+Route::get('/home', [SlideController::class, 'index'])->name('home');
 
 Route::get('/{any}', function(){
     return view('app');

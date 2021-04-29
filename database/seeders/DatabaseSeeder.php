@@ -17,11 +17,8 @@ class DatabaseSeeder extends Seeder
         $this->call([
             UsersTableSeeder::class,
             ContactFormSeeder::class,
-            AreaSeeder::class,
-            ShopSeeder::class,
-            RouteSeeder::class,
-            RouteShopSeeder::class,
             BookAppSeeder::class,
+            CommentsTableSeeder::class,
         ]);
 
     }

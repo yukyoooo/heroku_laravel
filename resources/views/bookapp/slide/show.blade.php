@@ -18,6 +18,7 @@
 
 
                     @csrf
+                    bookimg: <img src="{{ $slide->image_path }}"width="60">
                     title: {{ $slide->book_title }}<br>
                     detail: {{ $slide->book_detail }}<br>
                     user: {{ $slide->user->name }}<br>
@@ -32,6 +33,8 @@
                             @endif
                         @endauth
                     </table>
+
+                    @auth
                     <form class="mb-4" method="POST" action="{{ route('comment.store') }}">
                         @csrf
 
@@ -72,6 +75,7 @@
                         </button>
                         </div>
                     </form>
+                    @endauth
 
                     @if (session('commentstatus'))
                         <div class="alert alert-success mt-4 mb-4">
