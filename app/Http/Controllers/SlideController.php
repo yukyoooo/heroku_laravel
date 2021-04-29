@@ -18,14 +18,13 @@ class SlideController extends Controller
                         ->orderByDesc('created_at')
                         ->paginate(15);
 
-
         return view('bookapp.slide.index', compact('slides'));
     }
 
     public function create(Request $request)
     {
-        $members = DB::table('users')->get();
-        return view('bookapp.slide.create', ['members' => $members]);
+        $member =Auth::user();
+        return view('bookapp.slide.create', ['member' => $member]);
 
 
     }
@@ -34,7 +33,7 @@ class SlideController extends Controller
     {
         $slide = new bookApp;
         // dd($request->book_detail);
-        $slide->user_id = $request->member;
+        $slide->user_id = Auth::id();;
         $slide->book_title = $request->book_title;
         $slide->book_detail = $request->book_detail;
         // dd($request->all());

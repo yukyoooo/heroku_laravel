@@ -28,11 +28,7 @@
                         <textarea name="book_detail"></textarea>
                         <br>
                         作成者
-                        <select name="member">
-                            @foreach($members as $member)
-                            <option value="{{ $member->id }}">{{ $member->name }}</option>
-                            @endforeach
-                        </select>
+                        {{ $member->name }}
                         <br>
                         <input class="btn btn-info" type="submit" value="登録する">
                     </form>

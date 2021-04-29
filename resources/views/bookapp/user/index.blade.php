@@ -28,9 +28,6 @@
                         <th scope="co4">一番好きな本</th>
                         <th scope="co5">次に好きな本</th>
                         <th scope="co6">お気に入りの本</th>
-                        <th scope="co7">登録日時</th>
-                        <th scope="co8">最終更新日時</th>
-
                         </tr>
                     </thead>
                     <tbody>
@@ -42,8 +39,6 @@
                             <td>{{ $user->favorite_book }}</td>
                             <td>{{ $user->favorite_book2 }}</td>
                             <td>{{ $user->favorite_book3 }}</td>
-                            <td>{{ $user->created_at }}</td>
-                            <td>{{ $user->updated_at }}</td>
                         </tr>
 
                     </tbody>

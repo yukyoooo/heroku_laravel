@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
+use App\Models\bookApp;
+
 
 
 
@@ -46,7 +48,8 @@ class UserController extends Controller
     public function show($id)
     {
         $member= User::find($id);
-        return view('bookapp.user.show', compact('member'));
+        $slides = DB::table('book_apps')->where('user_id', $member->id)->get();
+        return view('bookapp.user.show', compact('member', 'slides'));
     }
 
 }
