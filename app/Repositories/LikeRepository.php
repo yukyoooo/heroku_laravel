@@ -13,17 +13,17 @@ use App\Repositories\Contracts\LikeRepository as LikeRepositoryContract;
  */
 class LikeRepository implements LikeRepositoryContract
 {
-    public function store(bookApp $bookApp, string $ip): Like
+    public function store(bookApp $id, string $ip): Like
     {
         return Like::firstOrCreate([
-            'thing_id' => $bookApp->id,
+            'book_app_id' => $id,
             'ip' => $ip,
         ]);
     }
 
-    public function destroy(bookApp $bookApp, string $ip)
+    public function destroy(bookApp $id, string $ip)
     {
-        Like::where('book_app_id', '=', $bookApp->id)
+        Like::where('book_app_id', '=', $id)
             ->where('ip', '=', $ip)
             ->delete();
     }

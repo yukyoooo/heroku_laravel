@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('bookapp.layout')
 @section('content')
 @include('bookapp._member')
 ユーザ毎のスライド一覧

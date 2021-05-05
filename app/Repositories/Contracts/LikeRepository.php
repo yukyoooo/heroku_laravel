@@ -4,10 +4,11 @@ namespace App\Repositories\Contracts;
 
 use App\Models\Like;
 use App\Models\Thing;
+use App\Models\bookApp;
 
 interface LikeRepository
 {
-    public function store(Thing $thing, string $ip): Like;
+    public function store(bookApp $id, string $ip): Like;
 
-    public function destroy(Thing $thing, string $ip);
+    public function destroy(bookApp $id, string $ip);
 }

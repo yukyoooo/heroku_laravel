@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Thing;
+use App\Models\Like;
 use App\Models\bookApp;
-use App\Repositories\LikeRepository;
+use App\Repositories\Contracts\LikeRepository;
 use Illuminate\Http\Request;
 
 /**
@@ -23,16 +24,20 @@ class LikeController extends Controller
         $this->likes = $likes;
     }
 
-    public function store(bookApp $bookApp, Request $request)
+    public function store(bookApp $id, Request $request)
     {
-        $this->likes->store($bookApp, $request->ip());
-
+        $like = Like::firstOrCreate([
+            'book_app_id' => $id->id,
+            'ip' => $request->ip(),
+        ]);
         return redirect()->route('bookapp.slide.index');
     }
 
-    public function destroy(bookApp $bookApp, Request $request)
+    public function destroy(bookApp $id, Request $request)
     {
-        $this->likes->destroy($bookApp, $request->ip());
+        Like::where('book_app_id', '=', $id->id)
+            ->where('ip', '=', $request->ip())
+            ->delete();
 
         return redirect()->route('bookapp.slide.index');
     }

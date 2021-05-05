@@ -15,6 +15,7 @@ class AddBookappIdToLikesTable extends Migration
     {
         Schema::table('likes', function (Blueprint $table) {
             $table->bigInteger('book_app_id');
+            $table->dropColumn('thing_id');
         });
     }
 
@@ -26,7 +27,8 @@ class AddBookappIdToLikesTable extends Migration
     public function down()
     {
         Schema::table('likes', function (Blueprint $table) {
-            //
+            $table->dropColumn('book_app_id');
+            $table->bigInteger('thing_id');
         });
     }
 }

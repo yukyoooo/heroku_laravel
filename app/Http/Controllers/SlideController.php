@@ -22,6 +22,7 @@ class SlideController extends Controller
         $slides->loadCount(['likes as liked' => function (Builder $query) {
             $query->where('ip', '=', request()->ip());
         }]);
+        // dd($slides->all());
         return view('bookapp.slide.index', compact('slides'));
     }
 
@@ -56,7 +57,7 @@ class SlideController extends Controller
     {
         $slide = bookApp::with('user')->find($id);
         $login_user = Auth::user();
-        // dd($slide->id);
+        // dd($slide->comments);
         return view('bookapp.slide.show', compact('slide', 'login_user'));
     }
 

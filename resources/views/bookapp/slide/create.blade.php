@@ -1,10 +1,10 @@
-@extends('layouts.app')
+@extends('bookapp.layout')
 
 @section('content')
 
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-4 col-12">
+        <div class="col-11">
             <div class="card">
                 <div class="card-header">{{ __('Dashboard') }}</div>
 

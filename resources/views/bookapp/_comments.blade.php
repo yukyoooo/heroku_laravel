@@ -27,7 +27,7 @@
         </div>
     </form>
     @endauth
-    <h2 class="h5">○○件のコメント</h2>
+    <h2 class="h5">{{ $slide->comments->count()}}件のコメント</h2>
     @forelse($slide->comments as $comment)
         <div class="border-top p-4">
             <time class="text-secondary">

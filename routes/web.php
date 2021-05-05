@@ -40,6 +40,10 @@ Route::middleware(['auth'])->prefix('mypage')->group(function () {
     Route::post('/update/{id}', [UserController::class, 'update'])->name('bookapp.user.update');
 });
 
+//いいね機能
+Route::post('/{id}/likes', [LikeController::class, 'store'])->name('like.store');
+Route::delete('/{id}/likes', [LikeController::class, 'destroy'])->name('like.destroy');
+
 //contactform
 Route::middleware(['auth'])->prefix('contact')->group(function () {
     Route::get('/index', [ContactFormController::class, 'index'])->name('contact.index');
@@ -60,10 +64,8 @@ Route::prefix('portfolio')->group(function () {
     Route::middleware('auth')->put('/{thing}', [ThingController::class, 'update'])->name('thing.update');
     Route::middleware('auth')->delete('/{thing}', [ThingController::class, 'destroy'])->name('thing.destroy');
 });
-Route::middleware('guest')->group(function (){
-    Route::post('/{thing}/likes', [LikeController::class, 'store'])->name('like.store');
-    Route::delete('/{thing}/likes', [LikeController::class, 'destroy'])->name('like.destroy');
-});
+
+
 
 Auth::routes();
 

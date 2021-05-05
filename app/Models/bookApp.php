@@ -27,18 +27,33 @@ class bookApp extends Model
         return $this->hasMany('App\Models\Comment');
     }
 
-    /** [relation] {@see \App\Models\Thing::$likes} */
+    /** [relation] {@see \App\Models\bookApp::$likes} */
     public function likes(): HasMany
     {
         return $this->hasMany(Like::class);
     }
 
-    /** [relation] {@see \App\Models\Thing::$myLike} */
-    public function myLike()
+    // /** [relation] {@see \App\Models\bookApp::$myLike} */
+    // public function myLike()
+    // {
+    //     return $this->hasOne(Like::class)
+    //         ->selectRaw('book_app_id, count(*) > 0 as liked')
+    //         ->where('ip', '=', request()->ip())
+    //         ->groupBy(['book_app_id']);
+    // }
+
+    public function liked(): bool
     {
-        return $this->hasOne(Like::class)
-            ->selectRaw('book_app_id, count(*) > 0 as liked')
-            ->where('ip', '=', request()->ip())
-            ->groupBy(['book_app_id']);
+        return $this->likes()->where('ip', '=', request()->ip())->exists();
+    }
+
+    public function getLikedAttribute()
+    {
+        return $this->likes()->where('ip', '=', request()->ip())->exists();
+    }
+
+    public function getLikesCountAttribute()
+    {
+        return $this->likes()->count();
     }
 }

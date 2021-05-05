@@ -16,22 +16,17 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  * @property Carbon $created_at 作成日時
  * @property Carbon $updated_at 最終更新日時
  * @property-read Thing $thing モノ
+ * @property-read bookApp $id モノ
  */
 class Like extends Model
 {
-    protected $fillable = ['thing_id', 'ip'];
+    protected $fillable = ['book_app_id', 'ip'];
 
     protected $dispatchesEvents = [
         'created' => LikeCreated::class,
     ];
 
-    /** [relation] {@see \App\Models\Like::$thing} */
-    public function thing(): BelongsTo
-    {
-        return $this->belongsTo(Thing::class);
-    }
-
-    /** [relation] {@see \App\Models\Like::$thing} */
+    /** [relation] {@see \App\Models\Like::$bookApp} */
     public function bookApp(): BelongsTo
     {
         return $this->belongsTo(bookApp::class);
