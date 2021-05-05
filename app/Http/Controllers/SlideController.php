@@ -74,7 +74,6 @@ class SlideController extends Controller
         $slide->book_title = $request->book_title;
         $slide->book_detail = $request->book_detail;
         $image = $request->file('image');
-        // dd($image);
         $path = Storage::disk('s3')->put('bookapp/bookimg', $image, 'public');
         $slide->image_path = Storage::disk('s3')->url($path);
         $slide->save();

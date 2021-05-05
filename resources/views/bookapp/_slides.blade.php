@@ -6,8 +6,26 @@
         <div class="col-md-4">
             <img src="{{ $slide->image_path }}" alt="{{ $slide->book_title }}" width="100%" style="margin:10px; box-shadow: 2px 2px 5px rgba(0,0,0,0.2);">
         </div>
-        <div class="col-md-8">
-            <div class="card-body">
+        <div class="col-md-8 ">
+            <div class="float-right">
+                @if($slide->liked)
+                    <form action="{{ route('like.destroy', $slide) }}" method="post">
+                        @method('delete')
+                        @csrf
+                        <button class="btn btn-info btn-sm" data-like="{{ $slide->id }}">
+                            いいね <[ {{ $slide->likes_count }} ]
+                        </button>
+                    </form>
+                @else
+                    <form action="{{ route('like.store', $slide) }}" method="post">
+                        @csrf
+                        <button class="btn btn-outline-secondary btn-sm" data-like="{{ $slide->id }}">
+                            いいね <[ {{ $slide->likes_count }} ]
+                        </button>
+                    </form>
+                @endif
+            </div>
+            <div class="card-body" style="margin-top:20px">
                 <h5 class="card-title">{{ $slide->book_title }}</h5>
                 <p class="card-text">{{ $slide->book_detail }}</p>
                 <p class="card-text"><small class="text-muted">{{ $slide->created_at }}<br>{{ $slide->user->name }}</small><a class="btn float-right btn-sm btn-primary" href="{{ route('bookapp.slide.show', ['id' => $slide->id ]) }}" role="button">詳細を見る</a></p>
