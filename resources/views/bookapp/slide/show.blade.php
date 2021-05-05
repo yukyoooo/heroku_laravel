@@ -6,7 +6,6 @@
 　Todo:<br>
 　　[　]画像のスライド表示<br>
 　　[　]全体的なデザイン<br>
-　　[　]コメント数を表示<br>
 　　[　]コメントが書かれた際にTeams通知<br>
 
 <div class="container">
@@ -41,8 +40,20 @@
                             <h5 class="card-title">{{ $slide->book_title }}</h5>
                             <p class="card-text">{{ $slide->book_detail }}</p>
                             <p class="card-text"><small class="text-muted">{{ $slide->created_at }}<br>{{ $slide->user->name }}</small></p>
-
                         </div>
+                        @auth
+                            @if( ( $slide->user->id ) === ( Auth::user()->id ) )
+                                <div class="float-right" style="margin:10px;">
+                                    <a class="btn btn-primary" href="{{ route('bookapp.slide.edit', ['id' => $slide->id ]) }}">編集</a>
+                                </div>
+                                <div class="float-right" style="margin:10px;">
+                                    <form method="POST" action="{{ route('bookapp.slide.destroy', ['id' => $slide->id ]) }}" id="delete_{{ $slide->id }}">
+                                    @csrf
+                                        <a href="#" class="btn btn-danger" data-id="{{ $slide->id }}" onclick="deletePost(this);">削除する</a>
+                                    </form>
+                                </div>
+                            @endif
+                        @endauth
                     </div>
                 </div>
             </div>

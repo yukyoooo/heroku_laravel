@@ -4,8 +4,6 @@ namespace Database\Factories;
 
 use App\Models\bookApp;
 use Illuminate\Database\Eloquent\Factories\Factory;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Str;
 
 class SlideFactory extends Factory
 {
@@ -24,16 +22,17 @@ class SlideFactory extends Factory
     public function definition()
     {
         $images = [
-            'https://s3-ap-northeast-1.amazonaws.com/my-app-s3-yukyo/bookapp/Vj3kwNCiBEGIM5HhVDfEAeUpzjZpYP1cFcafqJzB.jpg',
             'https://s3-ap-northeast-1.amazonaws.com/my-app-s3-yukyo/bookapp/bookimg/InIcjiwokwvtmvF0zT9Oji8XeJyCPvN7tb2EOfXN.jpg',
             'https://s3-ap-northeast-1.amazonaws.com/my-app-s3-yukyo/bookapp/bookimg/pPm5tSxnx6ZmwyvUI5vRTDyMUtBlDnZGJ9vdzGJr.jpg',
-            'https://s3-ap-northeast-1.amazonaws.com/my-app-s3-yukyo/bookapp/bookimg/juUyxs66akKElrAOOIAiLWACpnYllP8Cx0rA0GGv.jpg',
+            'https://s3-ap-northeast-1.amazonaws.com/my-app-s3-yukyo/bookapp/bookimg/2uHCJjUiY9AXp9anrxAzYE3NmveS9P6iBE7EzNv7.jpg',
+            'https://s3-ap-northeast-1.amazonaws.com/my-app-s3-yukyo/bookapp/bookimg/3vug2VYKGnDqN4996RPLNZDnok7SZvXP0QDnpww3.jpg',
+            'https://s3-ap-northeast-1.amazonaws.com/my-app-s3-yukyo/bookapp/bookimg/4dnX7KExk8akKP7IZE1fBTEWIPqZC9JqVZ1qh9XF.jpg',
         ];
         return [
-            'book_title' => Str::random(10),
-            'book_detail' => Str::random(300),
-            'user_id' => $this->faker->numberBetween($min = 1, $max=3),
-            'image_path' => $images[$this->faker->numberBetween($min = 0, $max=3)],
+            'book_title' => $this->faker->realText(10),
+            'book_detail' => $this->faker->realText(200),
+            'user_id' => $this->faker->numberBetween($min = 1, $max=10),
+            'image_path' => $images[$this->faker->numberBetween($min = 0, $max=4)],
         ];
     }
 }

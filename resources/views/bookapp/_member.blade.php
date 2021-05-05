@@ -1,6 +1,6 @@
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-8">
+        <div class="col-12">
             <div class="card">
                 <div class="card-header">{{ __('Dashboard') }}</div>
 
@@ -10,10 +10,6 @@
                             {{ session('status') }}
                         </div>
                     @endif
-
-                    メンバー詳細です
-
-
 
 
                     <table class="table">
@@ -37,15 +33,8 @@
                             <td>{{ $member->favorite_book3 }}</td>
 
                         </tr>
-
                     </tbody>
-
-                    <form method="GET" action="{{ route('bookapp.user.user') }}"></form>
-                    @csrf
-                        <input class="btn btn-info" type="submit" value="一覧へ戻る">
-                    </form>
-
-
+                    <a class="btn btn-info" href="{{ route('bookapp.user.user') }}">一覧へ戻る</a>
                     </table>
                 </div>
             </div>

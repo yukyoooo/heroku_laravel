@@ -1,6 +1,8 @@
 @extends('bookapp.layout')
 
 @section('content')
+　Todo:<br>
+　　[　]全体的なデザイン<br>
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-12">

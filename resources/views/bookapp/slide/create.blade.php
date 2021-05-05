@@ -1,6 +1,11 @@
 @extends('bookapp.layout')
 
 @section('content')
+　Todo:<br>
+　　[　]パワポを画像に変換する処理<br>
+　　[　]パワポアップロード追加<br>
+　　[　]全体的なデザイン<br>
+　　[　]バグ：タイトルや文章修正してアップロードすると画像なしで登録される<br>
 
 <div class="container">
     <div class="row justify-content-center">

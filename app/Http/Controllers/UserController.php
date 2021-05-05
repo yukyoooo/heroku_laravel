@@ -7,6 +7,8 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use App\Models\bookApp;
+use Illuminate\Database\Eloquent\Builder;
+
 
 
 
@@ -48,7 +50,15 @@ class UserController extends Controller
     public function show($id)
     {
         $member= User::find($id);
-        $slides = DB::table('book_apps')->where('user_id', $member->id)->get();
+        // $slides = DB::table('book_apps')->where('user_id', $member->id)->get();
+        $slides = bookApp::with('user')
+            ->where('user_id', $member->id)
+            ->orderByDesc('created_at')
+            ->get();
+        $slides->loadCount('likes');
+        $slides->loadCount(['likes as liked' => function (Builder $query) {
+            $query->where('ip', '=', request()->ip());
+        }]);
         return view('bookapp.user.show', compact('member', 'slides'));
     }
 
