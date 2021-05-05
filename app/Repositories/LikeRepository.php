@@ -4,6 +4,7 @@ namespace App\Repositories;
 
 use App\Models\Like;
 use App\Models\Thing;
+use App\Models\bookApp;
 use App\Repositories\Contracts\LikeRepository as LikeRepositoryContract;
 
 /**
@@ -12,17 +13,17 @@ use App\Repositories\Contracts\LikeRepository as LikeRepositoryContract;
  */
 class LikeRepository implements LikeRepositoryContract
 {
-    public function store(Thing $thing, string $ip): Like
+    public function store(bookApp $bookApp, string $ip): Like
     {
         return Like::firstOrCreate([
-            'thing_id' => $thing->id,
+            'thing_id' => $bookApp->id,
             'ip' => $ip,
         ]);
     }
 
-    public function destroy(Thing $thing, string $ip)
+    public function destroy(bookApp $bookApp, string $ip)
     {
-        Like::where('thing_id', '=', $thing->id)
+        Like::where('book_app_id', '=', $bookApp->id)
             ->where('ip', '=', $ip)
             ->delete();
     }

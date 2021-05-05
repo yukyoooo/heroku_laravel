@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\DB;
 use App\Models\bookApp;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Facades\Storage;
 
 
@@ -17,7 +18,10 @@ class SlideController extends Controller
         $slides = bookApp::with('user')
                         ->orderByDesc('created_at')
                         ->paginate(15);
-
+        $slides->loadCount('likes');
+        $slides->loadCount(['likes as liked' => function (Builder $query) {
+            $query->where('ip', '=', request()->ip());
+        }]);
         return view('bookapp.slide.index', compact('slides'));
     }
 

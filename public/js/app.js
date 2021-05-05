@@ -2632,7 +2632,7 @@ var Top = /*#__PURE__*/function (_React$Component) {
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("h2", {
           children: text
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("p", {
-          children: ["\u3053\u3093\u306B\u3061\u306F\u3001", this.state.name, "\u3055\u3093\uFF01"]
+          children: ["\u3053\u3093\u306B\u3061\u306F\u3001", this.state.name, "\u3055\u3093\uFF01\u3088\u308D\u3057\u304F\uFF01\uFF01\uFF01"]
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("button", {
           onClick: function onClick() {
             _this2.setState({

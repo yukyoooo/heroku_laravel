@@ -30,4 +30,10 @@ class Like extends Model
     {
         return $this->belongsTo(Thing::class);
     }
+
+    /** [relation] {@see \App\Models\Like::$thing} */
+    public function bookApp(): BelongsTo
+    {
+        return $this->belongsTo(bookApp::class);
+    }
 }

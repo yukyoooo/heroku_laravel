@@ -1,6 +1,3 @@
-@extends('layouts.app')
-
-@section('content')
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
@@ -14,7 +11,7 @@
                         </div>
                     @endif
 
-                    マイページです
+                    メンバー詳細です
 
 
 
@@ -23,29 +20,31 @@
                     <thead>
                         <tr>
                         <th scope="co1">名前</th>
-                        <th scope="co2">メアド</th>
                         <th scope="co3">紹介文</th>
                         <th scope="co4">一番好きな本</th>
                         <th scope="co5">次に好きな本</th>
                         <th scope="co6">お気に入りの本</th>
+
                         </tr>
                     </thead>
                     <tbody>
 
                         <tr>
-                            <td>{{ $user->name }}</td>
-                            <td>{{ $user->email }}</td>
-                            <td>{{ $user->introduction }}</td>
-                            <td>{{ $user->favorite_book }}</td>
-                            <td>{{ $user->favorite_book2 }}</td>
-                            <td>{{ $user->favorite_book3 }}</td>
+                            <td>{{ $member->name }}</td>
+                            <td>{{ $member->introduction }}</td>
+                            <td>{{ $member->favorite_book }}</td>
+                            <td>{{ $member->favorite_book2 }}</td>
+                            <td>{{ $member->favorite_book3 }}</td>
+
                         </tr>
 
                     </tbody>
-                    <form method="GET" action="{{ route('bookapp.user.edit', ['id' => $user->id ]) }}">
+
+                    <form method="GET" action="{{ route('bookapp.user.user') }}"></form>
                     @csrf
-                        <input class="btn btn-info" type="submit" value="変更する">
+                        <input class="btn btn-info" type="submit" value="一覧へ戻る">
                     </form>
+
 
                     </table>
                 </div>
@@ -53,4 +52,3 @@
         </div>
     </div>
 </div>
-@endsection
