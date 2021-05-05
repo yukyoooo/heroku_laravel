@@ -5,6 +5,8 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\SlideController;
 use App\Http\Controllers\ContactFormController;
 use App\Http\Controllers\CommentsController;
+use App\Http\Controllers\LikeController;
+use App\Http\Controllers\ThingController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,7 +19,7 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+// BookApp
 Route::get('/', [SlideController::class, 'index'])->name('bookapp.slide.index');
 Route::get('/show/{id}', [SlideController::class, 'show'])->name('bookapp.slide.show');
 Route::middleware(['auth'])->group(function () {
@@ -38,6 +40,7 @@ Route::middleware(['auth'])->prefix('mypage')->group(function () {
     Route::post('/update/{id}', [UserController::class, 'update'])->name('bookapp.user.update');
 });
 
+//contactform
 Route::middleware(['auth'])->prefix('contact')->group(function () {
     Route::get('/index', [ContactFormController::class, 'index'])->name('contact.index');
     Route::get('/create', [ContactFormController::class, 'create'])->name('contact.create');
@@ -49,9 +52,21 @@ Route::middleware(['auth'])->prefix('contact')->group(function () {
 });
 
 
+// 趣味ポートフォリオ
+Route::prefix('portfolio')->group(function () {
+    Route::get('/', [ThingController::class, 'index'])->name('thing.index');
+    Route::middleware('auth')->post('/create', [ThingController::class, 'store'])->name('thing.store');
+    Route::middleware('auth')->get('/{thing}', [ThingController::class, 'edit'])->name('thing.edit');
+    Route::middleware('auth')->put('/{thing}', [ThingController::class, 'update'])->name('thing.update');
+    Route::middleware('auth')->delete('/{thing}', [ThingController::class, 'destroy'])->name('thing.destroy');
+});
+Route::middleware('guest')->group(function (){
+    Route::post('/{thing}/likes', [LikeController::class, 'store'])->name('like.store');
+    Route::delete('/{thing}/likes', [LikeController::class, 'destroy'])->name('like.destroy');
+});
+
 Auth::routes();
 
-Route::get('/home', [SlideController::class, 'index'])->name('home');
 
 Route::get('/{any}', function(){
     return view('app');
