@@ -4,14 +4,22 @@
 
 
 　Todo:<br>
-　　[　]画像のスライド表示<br>
-　　[　]全体的なデザイン<br>
-　　[　]コメントが書かれた際にTeams通知<br>
+　　[取込中]PDFをスライド表示と上にあるバーを非表示<br>
+　　[未着手]全体的なデザイン<br>
+　　[未着手]コメントが書かれた際にTeams通知<br>
 
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-10">
-            <img src="http://placehold.jp/300x200.png" class="card-img-top" alt="...">
+        <div class="col-12">
+            <iframe id="main-slide"
+                class="card-img-top" alt="..."
+                src="{{ $slide->slides_path}}"
+                scrolling="no"
+                allowtransparency="true"
+                width="1000"
+                height="680"
+                style="border:0;">
+            </iframe>
             <div class="card mb-3">
                 <div class="row g-0">
                     <div class="col-md-3">

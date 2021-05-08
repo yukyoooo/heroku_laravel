@@ -29,7 +29,6 @@
                     {{ config('app.name', 'Laravel') }}
                 </a>
                 <a class="navbar-brand" href="{{ route('bookapp.user.user') }}">{{ __('members') }}</a>
-                <a class="navbar-brand" href="{{ route('bookapp.user.index') }}">{{ __('mypage') }}</a>
                 <a class="navbar-brand" href="{{ route('bookapp.slide.create') }}">{{ __('create') }}</a>
 
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
@@ -70,6 +69,8 @@
                                         {{ __('Logout') }}
                                     </a>
                                     <a class="nav-link" href="{{ route('contact.index') }}">{{ __('contact/index') }}</a>
+                                    <a class="navbar-brand" href="{{ route('bookapp.user.index') }}">{{ __('mypage') }}</a>
+
 
 
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">

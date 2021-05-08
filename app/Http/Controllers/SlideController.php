@@ -37,17 +37,19 @@ class SlideController extends Controller
     public function store(Request $request)
     {
         $slide = new bookApp;
-        // dd($request->book_detail);
         $slide->user_id = Auth::id();;
         $slide->book_title = $request->book_title;
         $slide->book_detail = $request->book_detail;
         // dd($request->all());
-        //s3アップロード開始
+        $today = date("Y-m-d");
+
         $image = $request->file('image');
-        // バケットの`myprefix`フォルダへアップロード
-        $path = Storage::disk('s3')->put('bookapp/bookimg', $image, 'public');
-        // アップロードした画像のフルパスを取得
-        $slide->image_path = Storage::disk('s3')->url($path);
+        $path_image = Storage::disk('s3')->put('bookapp/bookimg'.$today , $image, 'public');
+        $slide->image_path = Storage::disk('s3')->url($path_image);
+
+        $slides_pdf = $request->file('slides_pdf');
+        $path_slides = Storage::disk('s3')->put('bookapp/slides'.$today , $slides_pdf, 'public');
+        $slide->slides_path = Storage::disk('s3')->url($path_slides);
         // dd($slide);
         $slide->save();
         return redirect('/');
