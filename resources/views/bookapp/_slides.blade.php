@@ -9,7 +9,7 @@ https://iritec.jp/web_service/6802/ -->
         scrolling=”no”
         allowtransparency="true"
         width="100%"
-        height="270"
+        height="300"
         style="border:0;">
     </iframe>
     <div class="card mb-3" style="max-width: 540px; margin-top:-6px;">
