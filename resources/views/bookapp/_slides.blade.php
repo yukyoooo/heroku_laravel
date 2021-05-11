@@ -1,15 +1,18 @@
+<!-- #toolbar=0&navpanes=0
+PDFのパラメータまとめ
+https://iritec.jp/web_service/6802/ -->
 @foreach($slides as $slide)
 <div class="col-4" style="margin-top:100px;">
     <iframe id="main-slide"
         class="card-img-top" alt="..."
-        src="{{ $slide->slides_path}}"
-        scrolling="no"
+        src="{{ $slide->slides_path}}#view=FitH"
+        scrolling=”no”
         allowtransparency="true"
-        width="400"
+        width="100%"
         height="270"
         style="border:0;">
     </iframe>
-    <div class="card mb-3" style="max-width: 540px;">
+    <div class="card mb-3" style="max-width: 540px; margin-top:-6px;">
         <div class="row g-0">
             <div class="col-md-4" style="margin-top:10px;">
                 <img src="{{ $slide->image_path }}" alt="{{ $slide->book_title }}" width="100%" style="margin:10px; box-shadow: 2px 2px 5px rgba(0,0,0,0.2);">

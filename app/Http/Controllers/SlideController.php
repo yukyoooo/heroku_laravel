@@ -40,7 +40,6 @@ class SlideController extends Controller
         $slide->user_id = Auth::id();;
         $slide->book_title = $request->book_title;
         $slide->book_detail = $request->book_detail;
-        // dd($request->all());
         $today = date("Y-m-d");
 
         $image = $request->file('image');
@@ -50,7 +49,6 @@ class SlideController extends Controller
         $slides_pdf = $request->file('slides_pdf');
         $path_slides = Storage::disk('s3')->put('bookapp/slides'.$today , $slides_pdf, 'public');
         $slide->slides_path = Storage::disk('s3')->url($path_slides);
-        // dd($slide);
         $slide->save();
         return redirect('/');
     }
@@ -59,13 +57,11 @@ class SlideController extends Controller
     {
         $slide = bookApp::with('user')->find($id);
         $login_user = Auth::user();
-        // dd($slide->comments);
         return view('bookapp.slide.show', compact('slide', 'login_user'));
     }
 
     public function edit($id)
     {
-        //
         $slide = bookApp::with('user')->find($id);
         return view('bookapp.slide.edit', compact('slide'));
     }

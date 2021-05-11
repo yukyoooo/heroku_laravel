@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('bookapp.layout')
 
 @section('content')
 <div class="container">
@@ -39,29 +39,33 @@
                             </div>
                         </div>
 
-                        <div class="form-group row">
+                        <div class="form-group row mb-3">
                             <label for="introduction" class="col-md-4 col-form-label text-md-right">{{ __('自己紹介文') }}</label>
                             <div class="col-md-6">
-                                <textarea id="introduction" type="introduction" class="form-control @error('introduction') is-invalid @enderror" name="introduction" value="{{ old('introduction') }}" required autocomplete="introduction">
-                                </textarea>
+                                <textarea id="introduction" type="text" class="form-control" name="introduction" ></textarea>
+                                <div  class="form-text">あとから記入・修正できます。</div>
                             </div>
+
                         </div>
                         <div class="form-group row">
                             <label for="favorite_book" class="col-md-4 col-form-label text-md-right">{{ __('一番好きな本') }}</label>
                             <div class="col-md-6">
-                                <input id="favorite_book" type="favorite_book" class="form-control @error('favorite_book') is-invalid @enderror" name="favorite_book" value="{{ old('favorite_book') }}" required autocomplete="favorite_book">
+                                <input id="favorite_book" type="text" class="form-control" name="favorite_book" >
+                                <div  class="form-text">あとから記入・修正できます。</div>
                             </div>
                         </div>
                         <div class="form-group row">
                             <label for="favorite_book2" class="col-md-4 col-form-label text-md-right">{{ __('2番目に好きな本') }}</label>
                             <div class="col-md-6">
-                                <input id="favorite_book2" type="favorite_book2" class="form-control @error('favorite_book2') is-invalid @enderror" name="favorite_book2" value="{{ old('favorite_book2') }}" required autocomplete="favorite_book2">
+                                <input id="favorite_book2" type="text" class="form-control" name="favorite_book2" >
+                                <div  class="form-text">あとから記入・修正できます。</div>
                             </div>
                         </div>
                         <div class="form-group row">
                             <label for="favorite_book3" class="col-md-4 col-form-label text-md-right">{{ __('お気に入りの本') }}</label>
                             <div class="col-md-6">
-                                <input id="favorite_book3" type="favorite_book3" class="form-control @error('favorite_book3') is-invalid @enderror" name="favorite_book3" value="{{ old('favorite_book3') }}" required autocomplete="favorite_book3">
+                                <input id="favorite_book3" type="text" class="form-control" name="favorite_book3">
+                                <div  class="form-text">あとから記入・修正できます。</div>
                             </div>
                         </div>
 

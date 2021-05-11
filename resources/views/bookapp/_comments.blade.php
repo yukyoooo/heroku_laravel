@@ -8,12 +8,12 @@
 <section class="col-10">
 
     @auth
-    <form style="margin-bottom:50px;" method="POST" action="{{ route('comment.store') }}">
+    <form style="margin-top:50px;" method="POST" action="{{ route('comment.store') }}">
     @csrf
         <input name="post_id" type="hidden" value="{{ $slide->id }}">
         <div class="form-group">
         {{ $login_user->name }}
-            <textarea id="comment" name="comment" value="a" class="form-control {{ $errors->has('comment') ? 'is-invalid' : '' }}" rows="2">
+            <textarea id="comment" type="text" name="comment" class="form-control {{ $errors->has('comment') ? 'is-invalid' : '' }}" rows="2">
                 {{ old('comment') }}
             </textarea>
             @if ($errors->has('comment'))
@@ -27,7 +27,7 @@
         </div>
     </form>
     @endauth
-    <h2 class="h5">{{ $slide->comments->count()}}件のコメント</h2>
+    <h2 class="h5" style="margin-top:100px;">{{ $slide->comments->count()}}件のコメント</h2>
     @forelse($slide->comments as $comment)
         <div class="border-top p-4">
             <time class="text-secondary">

@@ -29,7 +29,7 @@ class ChangeYourName20ToYourName100OnContactForms extends Migration
     {
         Schema::table('contact_forms', function (Blueprint $table) {
             //
-            $table->string('your_name', 20)->change();;
+            $table->string('your_name', 20)->change();
 
         });
     }

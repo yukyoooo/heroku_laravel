@@ -1,13 +1,6 @@
 @extends('bookapp.layout')
 
 @section('content')
-
-
-　Todo:<br>
-　　[取込中]PDFをスライド表示と上にあるバーを非表示<br>
-　　[未着手]全体的なデザイン<br>
-　　[未着手]コメントが書かれた際にTeams通知<br>
-
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-12">
@@ -16,8 +9,8 @@
                 src="{{ $slide->slides_path}}"
                 scrolling="no"
                 allowtransparency="true"
-                width="1000"
-                height="680"
+                width="100%"
+                height="630"
                 style="border:0;">
             </iframe>
             <div class="card mb-3">

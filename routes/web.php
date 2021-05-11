@@ -66,12 +66,8 @@ Route::prefix('portfolio')->group(function () {
     Route::middleware('auth')->delete('/{thing}', [ThingController::class, 'destroy'])->name('thing.destroy');
 });
 
-// pdfをwebで表示
-Route::get('my_pdf', [PdfController::class, 'show'])->name('pdf.show');
-
 Auth::routes();
 
-
-// Route::get('/{any}', function(){
-//     return view('app');
-// })->where('any', '.*'); //補足：.*は、正規表現で0文字以上の任意の文字列を意味する
+Route::get('/{any}', function(){
+    return view('app');
+})->where('any', '.*'); //補足：.*は、正規表現で0文字以上の任意の文字列を意味する

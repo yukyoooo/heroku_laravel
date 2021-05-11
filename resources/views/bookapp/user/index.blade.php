@@ -1,55 +1,43 @@
 @extends('bookapp.layout')
 
 @section('content')
-　Todo:<br>
-　　[未着手]全体的なデザイン<br>
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Dashboard') }}</div>
-
-                <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
-
-                    マイページです
-
-
-
-
-                    <table class="table">
-                    <thead>
-                        <tr>
-                        <th scope="co1">名前</th>
-                        <th scope="co2">メアド</th>
-                        <th scope="co3">紹介文</th>
-                        <th scope="co4">一番好きな本</th>
-                        <th scope="co5">次に好きな本</th>
-                        <th scope="co6">お気に入りの本</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-
-                        <tr>
-                            <td>{{ $user->name }}</td>
-                            <td>{{ $user->email }}</td>
-                            <td>{{ $user->introduction }}</td>
-                            <td>{{ $user->favorite_book }}</td>
-                            <td>{{ $user->favorite_book2 }}</td>
-                            <td>{{ $user->favorite_book3 }}</td>
-                        </tr>
-
-                    </tbody>
-                    <form method="GET" action="{{ route('bookapp.user.edit', ['id' => $user->id ]) }}">
-                    @csrf
-                        <input class="btn btn-info" type="submit" value="変更する">
-                    </form>
-
-                    </table>
+                <div class="card-header">My Page</div>
+                    <div class="card-body">
+                        <form method="GET" action="{{ route('bookapp.user.edit', ['id' => $user->id ]) }}">
+                        @csrf
+                            <fieldset disabled>
+                                <div class="mb-3">
+                                    <label class="form-label">名前</label>
+                                    <input type="text" class="form-control" placeholder="{{ $user->name }}">
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">メールアドレス</label>
+                                    <input type="email" class="form-control" placeholder=" {{ $user->email }}">
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">紹介文</label>
+                                    <textarea type="text" class="form-control" placeholder="  {{ $user->introduction }}"></textarea>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">一番好きな本</label>
+                                    <input type="text" class="form-control" placeholder=" {{ $user->favorite_book }}">
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">次に好きな本</label>
+                                    <input type="text" class="form-control" placeholder=" {{ $user->favorite_book2 }}">
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">お気に入りの本</label>
+                                    <input type="text" class="form-control" placeholder=" {{ $user->favorite_book3 }}">
+                                </div>
+                            </fieldset>
+                            <input class="float-right btn btn-primary" type="submit" value="変更する">
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>

@@ -52,10 +52,10 @@ class RegisterController extends Controller
         return Validator::make($data, [
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'introduction' => ['string', 'max:500'],
-            'favorite_book' => ['string', 'max:50'],
-            'favorite_book2' => ['string', 'max:50'],
-            'favorite_book3' => ['string', 'max:50'],
+            'introduction' => ['max:500'],
+            'favorite_book' => ['max:50'],
+            'favorite_book2' => ['max:50'],
+            'favorite_book3' => ['max:50'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
     }
