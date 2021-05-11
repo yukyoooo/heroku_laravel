@@ -4,54 +4,33 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-12">
-            <div class="card">
-                <div class="card-header">{{ __('Dashboard') }}</div>
-
-                <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
-
-                    メンバー一覧です
-
-
-
-
-                    <table class="table">
-                    <thead>
-                        <tr>
-                        <th scope="co1">名前</th>
-                        <th scope="co2">紹介文</th>
-                        <th scope="co3">一番好きな本</th>
-                        <th scope="co4">次に好きな本</th>
-                        <th scope="co5">お気に入りの本</th>
-                        <th scope="co6">詳細</th>
-
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach($users as $user)
-                        <tr>
-                            <td>{{ $user->name }}</td>
-                            <td>{{ $user->introduction }}</td>
-                            <td>{{ $user->favorite_book }}</td>
-                            <td>{{ $user->favorite_book2 }}</td>
-                            <td>{{ $user->favorite_book3 }}</td>
-                            <td>
-                                <form method="GET" action="{{ route('bookapp.user.show', ['id' => $user->id ]) }}">
-                                @csrf
-                                    <input class="btn btn-info" type="submit" value="詳細を見る">
-                                </form>
-                            </td>
-                        </tr>
-                        @endforeach
-                    </tbody>
-                    </table>
-                    {{ $users->links() }}
+            @foreach($users as $user)
+            <form method="GET" action="{{ route('bookapp.user.show', ['id' => $user->id ]) }}">
+            @csrf
+                <div class="card rounded-3 d-flex flex-row bd-highlight mb-3">
+                    <div class="pl-4 p-1 flex-fill bd-highlight">
+                        <div id="emailHelp" class="form-text">Name</div>
+                        <h5 class="card-title">{{ $user->name }}</h5>
+                    </div>
+                    <div class="p-1 flex-fill bd-highlight">
+                        <div id="emailHelp" class="form-text">Favorite book</div>
+                        <h5 class="card-title">{{ $user->favorite_book }}</h5>
+                    </div>
+                    <div class="p-1 flex-fill bd-highlight">
+                        <div id="emailHelp" class="form-text">Favorite book2</div>
+                        <h5 class="card-title">{{ $user->favorite_book2 }}</h5>
+                    </div>
+                    <div class="p-1 flex-fill bd-highlight">
+                        <div id="emailHelp" class="form-text">Favorite book3</div>
+                        <h5 class="card-title">{{ $user->favorite_book3 }}</h5>
+                    </div>
+                    <div class="p-2 pr-4 float-right" >
+                        <input class="btn btn-primary btn-lg" type="submit" value="詳細を見る">
+                    </div>
                 </div>
-            </div>
+            </form>
+            @endforeach
+            {{ $users->links() }}
         </div>
     </div>
 </div>

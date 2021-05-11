@@ -13,9 +13,7 @@
         <input name="post_id" type="hidden" value="{{ $slide->id }}">
         <div class="form-group">
         {{ $login_user->name }}
-            <textarea id="comment" type="text" name="comment" class="form-control {{ $errors->has('comment') ? 'is-invalid' : '' }}" rows="2">
-                {{ old('comment') }}
-            </textarea>
+            <textarea id="comment" type="text" name="comment" class="form-control {{ $errors->has('comment') ? 'is-invalid' : '' }}" rows="2">{{ old('comment') }}</textarea>
             @if ($errors->has('comment'))
                 <div class="invalid-feedback">
                     {{ $errors->first('comment') }}

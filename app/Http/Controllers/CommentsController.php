@@ -16,8 +16,6 @@ class CommentsController extends Controller
             'name' => Auth::user()->name,
             'comment' => $request->comment,
         ];
-        // dd(savedata);
-
         $comment = new Comment;
         $comment->fill($savedata)->save();
 

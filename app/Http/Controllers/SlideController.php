@@ -36,19 +36,30 @@ class SlideController extends Controller
 
     public function store(Request $request)
     {
+
+
         $slide = new bookApp;
         $slide->user_id = Auth::id();;
         $slide->book_title = $request->book_title;
         $slide->book_detail = $request->book_detail;
-        $today = date("Y-m-d");
 
+        $today = date("Y-m-d");
         $image = $request->file('image');
         $path_image = Storage::disk('s3')->put('bookapp/bookimg'.$today , $image, 'public');
         $slide->image_path = Storage::disk('s3')->url($path_image);
-
         $slides_pdf = $request->file('slides_pdf');
         $path_slides = Storage::disk('s3')->put('bookapp/slides'.$today , $slides_pdf, 'public');
         $slide->slides_path = Storage::disk('s3')->url($path_slides);
+
+        //バリデーション
+        $rules = [
+            'book_title' => ['required', 'max:50'],
+            'book_detail' => ['max:500'],
+            'image' => ['required'],
+            'slides_pdf' => ['required'],
+        ];
+        $this->validate($request, $rules);
+
         $slide->save();
         return redirect('/');
     }
