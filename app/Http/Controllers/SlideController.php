@@ -3,12 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 use App\Models\bookApp;
-use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Support\Facades\Storage;
+use App\Services\SendToS3;
+use App\Http\Requests\StoreSlides;
+use App\Http\Requests\UpdateSlides;
 
 
 class SlideController extends Controller
@@ -26,43 +26,31 @@ class SlideController extends Controller
         return view('bookapp.slide.index', compact('slides'));
     }
 
+
+
     public function create(Request $request)
     {
         $member =Auth::user();
         return view('bookapp.slide.create', ['member' => $member]);
-
-
     }
 
-    public function store(Request $request)
+
+
+    public function store(StoreSlides $request)
     {
-
-
         $slide = new bookApp;
         $slide->user_id = Auth::id();;
         $slide->book_title = $request->book_title;
         $slide->book_detail = $request->book_detail;
 
-        $today = date("Y-m-d");
-        $image = $request->file('image');
-        $path_image = Storage::disk('s3')->put('bookapp/bookimg'.$today , $image, 'public');
-        $slide->image_path = Storage::disk('s3')->url($path_image);
-        $slides_pdf = $request->file('slides_pdf');
-        $path_slides = Storage::disk('s3')->put('bookapp/slides'.$today , $slides_pdf, 'public');
-        $slide->slides_path = Storage::disk('s3')->url($path_slides);
-
-        //バリデーション
-        $rules = [
-            'book_title' => ['required', 'max:50'],
-            'book_detail' => ['max:500'],
-            'image' => ['required'],
-            'slides_pdf' => ['required'],
-        ];
-        $this->validate($request, $rules);
+        $slide->image_path = SendToS3::sendImage($request->file('image'));
+        $slide->slides_path = SendToS3::sendPDF($request->file('slides_pdf'));
 
         $slide->save();
         return redirect('/');
     }
+
+
 
     public function show($id)
     {
@@ -71,6 +59,8 @@ class SlideController extends Controller
         return view('bookapp.slide.show', compact('slide', 'login_user'));
     }
 
+
+
     public function edit($id)
     {
         $slide = bookApp::with('user')->find($id);
@@ -78,17 +68,23 @@ class SlideController extends Controller
     }
 
 
-    public function update(Request $request, $id)
+
+    public function update(UpdateSlides $request, $id)
     {
         $slide = bookApp::find($id);
         $slide->book_title = $request->book_title;
         $slide->book_detail = $request->book_detail;
-        $image = $request->file('image');
-        $path = Storage::disk('s3')->put('bookapp/bookimg', $image, 'public');
-        $slide->image_path = Storage::disk('s3')->url($path);
+        if(null !== $request->file('image')){
+            $slide->image_path = SendToS3::sendImage($request->file('image'));
+        }
+        if(null !== $request->file('slides_pdf')){
+            $slide->slides_path = SendToS3::sendPDF($request->file('slides_pdf'));
+        }
         $slide->save();
         return redirect('/');
     }
+
+
 
     public function destroy($id)
     {

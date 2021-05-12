@@ -19,7 +19,7 @@
                             <label for="formFile" class="form-label">書籍画像(必須)</label>
                             <input class="form-control {{ $errors->has('image') ? 'is-invalid' : '' }}" type="file" id="formFile" name="image">
                             @error('image')
-                                <div class="invalid-feedback">書籍画像をアップロードしてください。</div>
+                                <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
                         </div>
 
@@ -27,7 +27,7 @@
                             <label for="formFile" class="form-label">PPTのPDF(必須)</label>
                             <input class="form-control {{ $errors->has('slides_pdf') ? 'is-invalid' : '' }}" type="file" id="formFile" name="slides_pdf">
                             @error('slides_pdf')
-                                <div class="invalid-feedback">PDFファイルをアップロードしてください。</div>
+                                <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
                         </div>
 
@@ -42,8 +42,11 @@
 
                         <div class="mb-3">
                             <label class="form-label">紹介文</label>
-                            <textarea type="text" name="book_detail" class="form-control"></textarea>
+                            <textarea type="text" name="book_detail" class="form-control {{ $errors->has('book_detail.max') ? 'is-invalid' : '' }}"></textarea>
                             <div  class="form-text">本について概要や感想、紹介文を記入してください</div>
+                            @error('book_detail.max')
+                                <div class="invalid-feedback">500文字以内におさめてください。</div>
+                            @enderror
                         </div>
 
                         <div class="mb-3">
