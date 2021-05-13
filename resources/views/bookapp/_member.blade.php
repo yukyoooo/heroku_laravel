@@ -1,8 +1,8 @@
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-12">
+        <div class="col-8">
             <div class="card">
-                <div class="card-header">{{ __('Dashboard') }}</div>
+                <div class="card-header">メンバー詳細</div>
 
                 <div class="card-body">
                     @if (session('status'))
@@ -10,30 +10,21 @@
                             {{ session('status') }}
                         </div>
                     @endif
+                    <p class="card-text" style="margin-bottom:0;"><small class="text-muted">Name</small></p>
+                    <h5 class="card-title">{{ $member->name }}</h5>
 
+                    <p class="card-text" style="margin-bottom:0;"><small class="text-muted">introduction</small></p>
+                    <p class="card-text">{{ $member->introduction }}</p>
 
-                    <table class="table">
-                    <thead>
-                        <tr>
-                        <th scope="co1">名前</th>
-                        <th scope="co3">紹介文</th>
-                        <th scope="co4">一番好きな本</th>
-                        <th scope="co5">次に好きな本</th>
-                        <th scope="co6">お気に入りの本</th>
+                    <p class="card-text" style="margin-bottom:0;"><small class="text-muted">一番好きな本</small></p>
+                    <p class="card-text">{{ $member->favorite_book }}</p>
 
-                        </tr>
-                    </thead>
-                    <tbody>
+                    <p class="card-text" style="margin-bottom:0;"><small class="text-muted">次に好きな本</small></p>
+                    <p class="card-text">{{ $member->favorite_book2 }}</p>
 
-                        <tr>
-                            <td>{{ $member->name }}</td>
-                            <td>{{ $member->introduction }}</td>
-                            <td>{{ $member->favorite_book }}</td>
-                            <td>{{ $member->favorite_book2 }}</td>
-                            <td>{{ $member->favorite_book3 }}</td>
+                    <p class="card-text" style="margin-bottom:0;"><small class="text-muted">お気に入りの本</small></p>
+                    <p class="card-text">{{ $member->favorite_book3 }}</p>
 
-                        </tr>
-                    </tbody>
                     <a class="btn btn-info" href="{{ route('bookapp.user.user') }}">一覧へ戻る</a>
                     </table>
                 </div>
