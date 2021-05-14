@@ -70,7 +70,7 @@
             </nav>
         </div>
 
-        <main class="">
+        <main style="margin-top:120px;">
             @yield('content')
         </main>
     </div>
