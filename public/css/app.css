@@ -10009,7 +10009,7 @@ h3 {
 }
 
 .top-image {
-  background: url(/images/top.jpg?8270f9fe3b5f2075f5d0739f57e89411);
+  background: url("../../public/images/top.jpg");
   height: 500px;
   background-size: cover;
   position: relative;
