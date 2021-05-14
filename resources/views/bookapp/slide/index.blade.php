@@ -1,6 +1,20 @@
 @extends('bookapp.layout')
 
 @section('content')
+
+
+<div class="top-image">
+    <h1 class="top-title">Out Book</h1>
+    <p>let's output a book ! out book!</p>
+</div>
+<div class="container">
+    <div class="row justify-content-evenly">
+        @include('bookapp._slides')
+
+    </div>
+    {{  $slides->links() }}
+</div>
+
 　Todo:<br>
 　　[未着手]詳細のPDFをスライド形式にする<br>
 　　[未着手]ファイルサイズが1Mを超えるとアップロードされない<br>
@@ -10,17 +24,6 @@
 　　[未着手]新しい投稿やコメントがあった際にTeams通知<br>
 　　[未着手]パワポをPDFに変換する処理<br>
 　　[未着手]ソースをキレイに整理する<br>
-
-
-
-<div class="container">
-    <div class="row justify-content-evenly">
-        @include('bookapp._slides')
-
-    </div>
-    {{  $slides->links() }}
-</div>
-
 
 
 
