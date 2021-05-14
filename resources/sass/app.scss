@@ -16,8 +16,8 @@
 
 // トップページ
 .top-image {
-    background: url('../../public/images/top.jpg');
-    height: 500px;
+    background: url('../images/top.jpg');
+    height: 600px;
     background-size: cover;
     position: relative;
     h1 {
@@ -26,7 +26,7 @@
         text-align: center;
         color:white;
         font-weight: bold;
-        top:200px;
+        top:270px;
         font-size: 78px;
     }
     p{
@@ -35,7 +35,7 @@
         text-align: center;
         color:rgba(255, 255, 255, 0.769);
         font-weight: bold;
-        top:300px;
+        top:370px;
         font-size: 18px;
     }
 }
