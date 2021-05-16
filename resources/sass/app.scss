@@ -14,6 +14,7 @@
     }
 }
 
+
 // トップページ
 .top-image {
     background: url('../images/top.jpg');
@@ -51,4 +52,30 @@ left: 0;
 content: ' ';
 }
 
+
+// slide.showページ
+.main-wrapper{
+
+    .btn-wrapper{
+        position: absolute;
+        top:500px;
+        left:50px;
+        a{
+            font-size: 80px;
+            color:gray;
+            cursor: pointer;
+            padding:0px 3px;
+            :hover{
+                color:black;
+                transition: color 0.5s
+            }
+        }
+    }
+
+    .edit_delete_wrapper{
+        position: absolute;
+        bottom:0px;
+        right:20px;
+    }
+}
 
