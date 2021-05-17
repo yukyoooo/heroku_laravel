@@ -23,6 +23,7 @@ use Illuminate\Support\Facades\Route;
 // BookApp
 Route::get('/', [SlideController::class, 'index'])->name('bookapp.slide.index');
 Route::get('/show/{id}', [SlideController::class, 'show'])->name('bookapp.slide.show');
+Route::get('/booklist', [SlideController::class, 'index_booklist'])->name('bookapp.slide.booklist');
 Route::middleware(['auth'])->group(function () {
     Route::get('/create', [SlideController::class, 'create'])->name('bookapp.slide.create');
     Route::post('/store', [SlideController::class, 'store'])->name('bookapp.slide.store');

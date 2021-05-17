@@ -22,7 +22,7 @@ class SlideController extends Controller
         $slides->loadCount(['likes as liked' => function (Builder $query) {
             $query->where('ip', '=', request()->ip());
         }]);
-        // dd($slides->all());
+
         return view('bookapp.slide.index', compact('slides'));
     }
 
@@ -91,5 +91,15 @@ class SlideController extends Controller
         $slide = bookApp::find($id);
         $slide->delete();
         return redirect('/');
+    }
+
+
+    public function index_booklist(Request $request)
+    {
+        $slides = bookApp::with('user')
+                        ->orderByDesc('created_at')
+                        ->paginate(36);
+
+        return view('bookapp.slide.booklist', compact('slides'));
     }
 }

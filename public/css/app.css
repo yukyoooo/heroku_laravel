@@ -10065,3 +10065,13 @@ h3 {
   bottom: 0px;
   right: 20px;
 }
+
+.booklist img {
+  margin: 10px;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+  transition: all 0.2s;
+}
+.booklist img:hover {
+  box-shadow: 0 5px 10px black;
+  transform: translate(0, -5px);
+}
