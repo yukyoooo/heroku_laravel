@@ -8,7 +8,7 @@
     <p>let's output a book ! out book!</p>
 </div>
 <div class="container">
-    <div class="row justify-content-evenly">
+    <div class="row ">
         @include('bookapp._slides')
 
     </div>
