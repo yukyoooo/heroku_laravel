@@ -13,4 +13,5 @@
         </div>
         @endforeach
     </div>
+    {{  $slides->links() }}
 </div>
