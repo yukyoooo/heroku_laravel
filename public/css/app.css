@@ -10007,6 +10007,15 @@ h3 {
 .navbar a {
   font-weight: bold;
 }
+.navbar span {
+  transition: all 0.2s;
+}
+.navbar span:hover {
+  color: #C7243A;
+  border-bottom: solid 2px #DA5019;
+  padding-bottom: -3px;
+  transition: all 0.2s;
+}
 
 .top-image {
   background: url("../images/top.jpg");
