@@ -18,6 +18,9 @@ https://iritec.jp/web_service/6802/ -->
                 <img src="{{ $slide->image_path }}" alt="{{ $slide->book_title }}" width="100%" style="margin:10px; box-shadow: 2px 2px 5px rgba(0,0,0,0.2);">
             </div>
             <div class="col-md-8 ">
+
+
+
                 <div class="float-right" style="margin:10px;">
 
                     @if($slide->liked)
@@ -37,6 +40,11 @@ https://iritec.jp/web_service/6802/ -->
                         </form>
                     @endif
                 </div>
+                <p class="card-text">
+                    @foreach($slide->tags as $tag)
+                    <span class="badge badge-pill badge-secondary" style="margin-top:20px; padding:7px;">{{ $tag->name }}</span>
+                    @endforeach
+                </p>
                 <div class="card-body" style="margin-top:20px">
                     <h5 class="card-title">{{ $slide->book_title }}</h5>
                     <p class="card-text">{{ Str::limit($slide->book_detail, 50, '(…)' ) }}</p>

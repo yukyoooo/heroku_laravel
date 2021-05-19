@@ -50,6 +50,18 @@
                         </div>
 
                         <div class="mb-3">
+                            <label class="form-label">タグ</label>
+                            @foreach($tags as $tag)
+                                <div class="form-check">
+                                    <input class="form-check-input" name="tags[]" type="checkbox" value="{{$tag->id}}" id="flexCheckDefault">
+                                    <label class="form-check-label" for="flexCheckDefault">
+                                        {{ $tag->name }}
+                                    </label>
+                                </div>
+                            @endforeach
+                        </div>
+
+                        <div class="mb-3">
                             <label for="exampleInputEmail1" class="form-label">作成者:{{ $member->name }}</label>
                         </div>
                         <input class="float-right btn btn-primary" type="submit" value="登録する">

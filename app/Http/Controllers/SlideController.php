@@ -4,12 +4,12 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\bookApp;
+use App\Models\Tag;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Database\Eloquent\Builder;
 use App\Services\SendToS3;
 use App\Http\Requests\StoreSlides;
 use App\Http\Requests\UpdateSlides;
-
 
 class SlideController extends Controller
 {
@@ -28,10 +28,11 @@ class SlideController extends Controller
 
 
 
-    public function create(Request $request)
+    public function create()
     {
         $member =Auth::user();
-        return view('bookapp.slide.create', ['member' => $member]);
+        $tags = Tag::all();
+        return view('bookapp.slide.create', ['member' => $member, 'tags'=>$tags]);
     }
 
 
@@ -47,6 +48,7 @@ class SlideController extends Controller
         $slide->slides_path = SendToS3::sendPDF($request->file('slides_pdf'));
 
         $slide->save();
+        $slide->tags()->attach(request()->tags);
         return redirect('/');
     }
 
@@ -64,7 +66,9 @@ class SlideController extends Controller
     public function edit($id)
     {
         $slide = bookApp::with('user')->find($id);
-        return view('bookapp.slide.edit', compact('slide'));
+        $tags = $slide->tags->pluck('id')->toArray();
+        $tagList = Tag::all();
+        return view('bookapp.slide.edit', compact('slide', 'tags', 'tagList'));
     }
 
 
@@ -80,6 +84,7 @@ class SlideController extends Controller
         if(null !== $request->file('slides_pdf')){
             $slide->slides_path = SendToS3::sendPDF($request->file('slides_pdf'));
         }
+        $slide->tags()->sync(request()->tags);
         $slide->save();
         return redirect('/');
     }
@@ -90,6 +95,7 @@ class SlideController extends Controller
     {
         $slide = bookApp::find($id);
         $slide->delete();
+        $slide->tags()->detach();
         return redirect('/');
     }
 

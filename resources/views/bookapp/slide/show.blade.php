@@ -55,6 +55,11 @@
                                 </form>
                             @endif
                         </div>
+                        <p class="card-text">
+                            @foreach($slide->tags as $tag)
+                            <span class="badge badge-pill badge-secondary" style="margin-top:20px; padding:7px;">{{ $tag->name }}</span>
+                            @endforeach
+                        </p>
                         <div class="card-body" style="margin-top:20px">
                             <h5 class="card-title">{{ $slide->book_title }}</h5>
                             <p class="card-text">{{ $slide->book_detail }}</p>

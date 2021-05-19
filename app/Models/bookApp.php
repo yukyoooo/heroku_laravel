@@ -56,4 +56,9 @@ class bookApp extends Model
     {
         return $this->likes()->count();
     }
+
+    public function tags()
+    {
+        return $this->belongsToMany(Tag::class, 'book_app_tag', 'book_app_id', 'tag_id')->withTimestamps();
+    }
 }
