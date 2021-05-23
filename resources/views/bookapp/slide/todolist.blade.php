@@ -6,22 +6,23 @@
 <div class="container " style="margin-top:100px;">
     <div class="row">
         <h1>今後実装しようとしていること一覧</h1>
-        <ul>
-            <li><s>タグ追加</s></li>
-            <li><s>pdfの登録バリデーション</s>　5/23</li>
-            <li>ドメイン+SSL</li>
-            <li>パワポをPDFに変換する処理</li>
-            <li>スマホ対応</li>
-            <li>詳細ページのPDFをスライド形式にする</li>
-            <li>文字の大きさ、全体的なデザイン</li>
-            <li>いいねをjsで実装する(画面更新してほしくない)</li>
-            <li>クラウドフロントを導入して画像を早く表示させる</li>
-            <li>新しい投稿やコメントがあった際にTeams通知</li>
-            <li>見える部分はニックネーム表記</li>
-            <li>書籍登録する際に書籍検索APIを使って書籍情報自動登録 参考：https://qiita.com/kanary/items/5ec45bbc01efd4388fdb</li>
-            <li>書籍登録時、何を学んだかを書く項目追加</li>
-            <li>タグ検索、カテゴリ一覧表示</li>
-            <li>ソースをキレイに整理する</li>
+        <ul class="list-group list-group-flush" style="margin-top:50px;">
+            <li class="list-group-item">ドメイン+SSL</li>
+            <li class="list-group-item">パワポをPDFに変換する処理</li>
+            <li class="list-group-item">スマホ対応</li>
+            <li class="list-group-item">詳細ページのPDFをスライド形式にする</li>
+            <li class="list-group-item">文字の大きさ、全体的なデザイン</li>
+            <li class="list-group-item">いいねをjsで実装する(画面更新してほしくない)</li>
+            <li class="list-group-item">クラウドフロントを導入して画像を早く表示させる</li>
+            <li class="list-group-item">新しい投稿やコメントがあった際にTeams通知</li>
+            <li class="list-group-item">見える部分はニックネーム表記</li>
+            <li class="list-group-item">書籍登録する際に書籍検索APIを使って書籍情報自動登録 参考：https://qiita.com/kanary/items/5ec45bbc01efd4388fdb</li>
+            <li class="list-group-item">書籍登録時、何を学んだかを書く項目追加</li>
+            <li class="list-group-item">タグ検索、カテゴリ一覧表示</li>
+            <li class="list-group-item">ソースをキレイに整理する</li>
+            <rabel style="margin-top:30px;">達成済み</rabel>
+            <li class="list-group-item disabled" aria-disabled="true"><s>タグ追加</s></li>
+            <li class="list-group-item disabled" aria-disabled="true"><s>pdfの登録バリデーション</s>2021.5.23</li>
         </ul>
     </div>
 </div>
