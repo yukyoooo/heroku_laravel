@@ -24,6 +24,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [SlideController::class, 'index'])->name('bookapp.slide.index');
 Route::get('/show/{id}', [SlideController::class, 'show'])->name('bookapp.slide.show');
 Route::get('/booklist', [SlideController::class, 'index_booklist'])->name('bookapp.slide.booklist');
+Route::get('/todolist', [SlideController::class, 'todolist'])->name('bookapp.slide.todolist');
 Route::middleware(['auth'])->group(function () {
     Route::get('/create', [SlideController::class, 'create'])->name('bookapp.slide.create');
     Route::post('/store', [SlideController::class, 'store'])->name('bookapp.slide.store');
@@ -64,6 +65,7 @@ Route::prefix('portfolio')->group(function () {
     Route::middleware('auth')->post('/create', [ThingController::class, 'store'])->name('thing.store');
     Route::middleware('auth')->get('/{thing}', [ThingController::class, 'edit'])->name('thing.edit');
     Route::middleware('auth')->put('/{thing}', [ThingController::class, 'update'])->name('thing.update');
+    Route::middleware('auth')->delete('/{thing}', [ThingController::class, 'destroy'])->name('thing.destroy');
     Route::middleware('auth')->delete('/{thing}', [ThingController::class, 'destroy'])->name('thing.destroy');
 });
 

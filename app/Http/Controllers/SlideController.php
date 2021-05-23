@@ -100,12 +100,17 @@ class SlideController extends Controller
     }
 
 
-    public function index_booklist(Request $request)
+    public function index_booklist()
     {
         $slides = bookApp::with('user')
                         ->orderByDesc('created_at')
                         ->paginate(36);
 
         return view('bookapp.slide.booklist', compact('slides'));
+    }
+
+    public function todolist()
+    {
+        return view('bookapp.slide.todolist');
     }
 }
