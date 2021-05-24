@@ -62,7 +62,10 @@
                         </p>
                         <div class="card-body" style="margin-top:20px">
                             <h5 class="card-title">{{ $slide->book_title }}</h5>
+                            <label>紹介文</label>
                             <p class="card-text">{{ $slide->book_detail }}</p>
+                            <label>学んだこと</label>
+                            <p class="card-text">{{ $slide->output }}</p>
                             <p class="card-text"><small class="text-muted">{{ $slide->created_at }}<br>{{ $slide->user->name }}</small></p>
                         </div>
                         @auth

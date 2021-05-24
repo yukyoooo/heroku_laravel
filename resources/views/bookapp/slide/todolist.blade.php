@@ -17,12 +17,12 @@
             <li class="list-group-item">新しい投稿やコメントがあった際にTeams通知</li>
             <li class="list-group-item">見える部分はニックネーム表記</li>
             <li class="list-group-item">書籍登録する際に書籍検索APIを使って書籍情報自動登録 参考：https://qiita.com/kanary/items/5ec45bbc01efd4388fdb</li>
-            <li class="list-group-item">書籍登録時、何を学んだかを書く項目追加</li>
             <li class="list-group-item">タグ検索、カテゴリ一覧表示</li>
             <li class="list-group-item">ソースをキレイに整理する</li>
             <rabel style="margin-top:30px;">達成済み</rabel>
             <li class="list-group-item disabled" aria-disabled="true"><s>タグ追加</s></li>
-            <li class="list-group-item disabled" aria-disabled="true"><s>pdfの登録バリデーション</s>2021.5.23</li>
+            <li class="list-group-item disabled" aria-disabled="true"><s>書籍登録時、何を学んだかを書く項目追加</s></li>
+            <li class="list-group-item disabled" aria-disabled="true"><s>pdfの登録バリデーション</s></li>
         </ul>
     </div>
 </div>

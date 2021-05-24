@@ -50,6 +50,15 @@
                         </div>
 
                         <div class="mb-3">
+                            <label class="form-label">学んだこと</label>
+                            <textarea type="text" name="book_output" class="form-control {{ $errors->has('book_output.max') ? 'is-invalid' : '' }}"></textarea>
+                            <div  class="form-text">本について学んだことを記入してください</div>
+                            @error('book_output.max')
+                                <div class="invalid-feedback">500文字以内におさめてください。</div>
+                            @enderror
+                        </div>
+
+                        <div class="mb-3">
                             <label class="form-label">タグ</label>
                             @foreach($tags as $tag)
                                 <div class="form-check">

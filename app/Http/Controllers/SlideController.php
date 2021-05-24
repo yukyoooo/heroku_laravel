@@ -43,7 +43,7 @@ class SlideController extends Controller
         $slide->user_id = Auth::id();;
         $slide->book_title = $request->book_title;
         $slide->book_detail = $request->book_detail;
-
+        $slide->output = $request->book_output;
         $slide->image_path = SendToS3::sendImage($request->file('image'));
         $slide->slides_path = SendToS3::sendPDF($request->file('slides_pdf'));
 
@@ -78,6 +78,7 @@ class SlideController extends Controller
         $slide = bookApp::find($id);
         $slide->book_title = $request->book_title;
         $slide->book_detail = $request->book_detail;
+        $slide->output = $request->book_output;
         if(null !== $request->file('image')){
             $slide->image_path = SendToS3::sendImage($request->file('image'));
         }

@@ -35,12 +35,12 @@ Route::middleware(['auth'])->group(function () {
 
 Route::post('comment', [CommentsController::class, 'store'])->name('comment.store');
 
-Route::get('members', [UserController::class, 'members'])->name('bookapp.user.user');
-Route::get('members/{id}', [UserController::class, 'show'])->name('bookapp.user.show');
-Route::middleware(['auth'])->prefix('mypage')->group(function () {
-    Route::get('/', [UserController::class, 'index'])->name('bookapp.user.index');
-    Route::get('/edit/{id}', [UserController::class, 'edit'])->name('bookapp.user.edit');
-    Route::post('/update/{id}', [UserController::class, 'update'])->name('bookapp.user.update');
+Route::middleware(['auth'])->group(function () {
+    Route::get('members', [UserController::class, 'members'])->name('bookapp.user.user');
+    Route::get('members/{id}', [UserController::class, 'show'])->name('bookapp.user.show');
+    Route::get('/mypage', [UserController::class, 'index'])->name('bookapp.user.index');
+    Route::get('/mypage/edit/{id}', [UserController::class, 'edit'])->name('bookapp.user.edit');
+    Route::post('/mypage/update/{id}', [UserController::class, 'update'])->name('bookapp.user.update');
 });
 
 //いいね機能
