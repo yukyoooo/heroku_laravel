@@ -48,7 +48,13 @@ https://iritec.jp/web_service/6802/ -->
                 <div class="card-body" style="margin-top:20px">
                     <h5 class="card-title">{{ $slide->book_title }}</h5>
                     <p class="card-text">{{ Str::limit($slide->book_detail, 50, '(…)' ) }}</p>
-                    <p class="card-text"><small class="text-muted">{{ $slide->created_at->format('Y.m.d') }}<br>{{ $slide->user->name }}</small> <a class="btn float-right btn-sm btn-primary" href="{{ route('bookapp.slide.show', ['id' => $slide->id ]) }}" role="button"><i class="far fa-comment-dots"> {{ $slide->comments->count()}} </i>　詳細</a></p>
+                    <p class="card-text"><small class="text-muted">{{ $slide->created_at->format('Y.m.d') }}<br>
+                    @if($slide->user->nickname)
+                        {{ $slide->user->nickname}}
+                    @else
+                        {{ $slide->user->name }}
+                    @endif</small>
+                    <a class="btn float-right btn-sm btn-primary" href="{{ route('bookapp.slide.show', ['id' => $slide->id ]) }}" role="button"><i class="far fa-comment-dots"> {{ $slide->comments->count()}} </i>　詳細</a></p>
                 </div>
             </div>
         </div>

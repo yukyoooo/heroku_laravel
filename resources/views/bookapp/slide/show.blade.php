@@ -66,7 +66,14 @@
                             <p class="card-text">{{ $slide->book_detail }}</p>
                             <label>学んだこと</label>
                             <p class="card-text">{{ $slide->output }}</p>
-                            <p class="card-text"><small class="text-muted">{{ $slide->created_at }}<br>{{ $slide->user->name }}</small></p>
+                            <p class="card-text">
+                                <small class="text-muted">{{ $slide->created_at }}<br>
+                                @if($slide->user->nickname)
+                                    {{ $slide->user->nickname }}
+                                @else
+                                    {{ $slide->user->name }}
+                                @endif
+                                </small></p>
                         </div>
                         @auth
                             @if( ( $slide->user->id ) === ( Auth::user()->id ) )

@@ -24,6 +24,10 @@
                             <input type="email" name="email" class="form-control"  value="{{ $user->email }}">
                         </div>
                         <div class="mb-3">
+                            <label for="exampleFormControlInput1" class="form-label">ニックネーム</label>
+                            <input type="text" name="nickname" class="form-control"  value="{{ $user->nickname }}">
+                        </div>
+                        <div class="mb-3">
                             <label for="exampleFormControlInput1" class="form-label">紹介文</label>
                             <textarea  class="form-control" name="introduction" >{{ $user->introduction }}</textarea>
                         </div>

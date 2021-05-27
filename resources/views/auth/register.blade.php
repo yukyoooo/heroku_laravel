@@ -40,12 +40,19 @@
                         </div>
 
                         <div class="form-group row mb-3">
+                            <label for="nickname" class="col-md-4 col-form-label text-md-right">{{ __('ニックネーム') }}</label>
+                            <div class="col-md-6">
+                                <textarea id="nickname" type="text" class="form-control" name="nickname" ></textarea>
+                                <div  class="form-text">あとから記入・修正できます。</div>
+                            </div>
+                        </div>
+
+                        <div class="form-group row mb-3">
                             <label for="introduction" class="col-md-4 col-form-label text-md-right">{{ __('自己紹介文') }}</label>
                             <div class="col-md-6">
                                 <textarea id="introduction" type="text" class="form-control" name="introduction" ></textarea>
                                 <div  class="form-text">あとから記入・修正できます。</div>
                             </div>
-
                         </div>
                         <div class="form-group row">
                             <label for="favorite_book" class="col-md-4 col-form-label text-md-right">{{ __('一番好きな本') }}</label>

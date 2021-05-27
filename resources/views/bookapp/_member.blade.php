@@ -10,8 +10,14 @@
                             {{ session('status') }}
                         </div>
                     @endif
-                    <p class="card-text" style="margin-bottom:0;"><small class="text-muted">Name</small></p>
-                    <h5 class="card-title">{{ $member->name }}</h5>
+                    <p class="card-text" style="margin-bottom:0;"><small class="text-muted">Name(nickname)</small></p>
+                    <h5 class="card-title">
+                    @if($member->nickname)
+                        {{ $member->nickname}}
+                    @else
+                        {{ $member->name }}
+                    @endif
+                    </h5>
 
                     <p class="card-text" style="margin-bottom:0;"><small class="text-muted">introduction</small></p>
                     <p class="card-text">{{ $member->introduction }}</p>

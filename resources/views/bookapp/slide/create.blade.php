@@ -71,7 +71,8 @@
                         </div>
 
                         <div class="mb-3">
-                            <label for="exampleInputEmail1" class="form-label">作成者:{{ $member->name }}</label>
+                            <label for="exampleInputEmail1" class="form-label">作成者:{{ $member->name }}</label><br>
+                            @if($member->nickname)<label for="exampleInputEmail1" class="form-label">ニックネーム：{{ $member->nickname}}</label>@endif
                         </div>
                         <input class="float-right btn btn-primary" type="submit" value="登録する">
                     </form>

@@ -19,6 +19,10 @@
                                     <input type="email" class="form-control" placeholder=" {{ $user->email }}">
                                 </div>
                                 <div class="mb-3">
+                                    <label class="form-label">ニックネーム</label>
+                                    <input type="text" class="form-control" placeholder=" {{ $user->nickname }}">
+                                </div>
+                                <div class="mb-3">
                                     <label class="form-label">紹介文</label>
                                     <textarea type="text" class="form-control" placeholder="  {{ $user->introduction }}"></textarea>
                                 </div>

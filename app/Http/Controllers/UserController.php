@@ -19,7 +19,7 @@ class UserController extends Controller
     {
 
         $query = DB::table('users');
-        $query->select('id','name', 'introduction', 'favorite_book', 'favorite_book2','favorite_book3','created_at');
+        $query->select('id','name','nickname', 'introduction', 'favorite_book', 'favorite_book2','favorite_book3','created_at');
         $query->orderBy('created_at', 'asc');
         $users = $query->paginate(20);
 
@@ -36,6 +36,8 @@ class UserController extends Controller
     public function edit($id)
     {
         $user = Auth::user();
+        // dd($user->nickname);
+
         return view('bookapp.user.edit',compact('user'));
     }
 

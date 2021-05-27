@@ -9,8 +9,13 @@
             @csrf
                 <div class="card rounded-3 d-flex flex-row bd-highlight mb-3">
                     <div class="pl-4 p-1 flex-fill bd-highlight">
-                        <div id="emailHelp" class="form-text">Name</div>
-                        <h5 class="card-title">{{ $user->name }}</h5>
+                        <div id="emailHelp" class="form-text">Name(nickname)</div>
+                        <h5 class="card-title">
+                        @if($user->nickname)
+                            {{ $user->nickname}}
+                        @else
+                            {{ $user->name }}
+                        @endif</h5>
                     </div>
                     <div class="p-1 flex-fill bd-highlight">
                         <div id="emailHelp" class="form-text">Favorite book</div>

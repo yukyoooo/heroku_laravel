@@ -13,7 +13,7 @@ class CommentsController extends Controller
     {
         $savedata = [
             'book_app_id' => $request->post_id,
-            'name' => Auth::user()->name,
+            'name' => Auth::user()->nickname ? Auth::user()->nickname : Auth::user()->name,
             'comment' => $request->comment,
         ];
         $comment = new Comment;

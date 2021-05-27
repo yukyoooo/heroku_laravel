@@ -12,7 +12,11 @@
     @csrf
         <input name="post_id" type="hidden" value="{{ $slide->id }}">
         <div class="form-group">
-        {{ $login_user->name }}
+        @if($login_user->nickname)
+            {{ $login_user->nickname}}
+        @else
+            {{ $login_user->name }}
+        @endif
             <textarea id="comment" type="text" name="comment" class="form-control {{ $errors->has('comment') ? 'is-invalid' : '' }}" rows="2">{{ old('comment') }}</textarea>
             @if ($errors->has('comment'))
                 <div class="invalid-feedback">
@@ -29,7 +33,12 @@
     @forelse($slide->comments as $comment)
         <div class="border-top p-4">
             <time class="text-secondary">
-                {{ $comment->name }} /
+                @if($comment->nickname)
+                    {{ $comment->nickname}}
+                @else
+                    {{ $comment->name }}
+                @endif
+                /
                 {{ $comment->created_at->format('Y.m.d H:i') }} /
             </time>
             <p class="mt-2">
