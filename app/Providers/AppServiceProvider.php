@@ -10,7 +10,7 @@ use App\Repositories\ThingRepository;
 use App\Repositories\Contracts\ThingRepository as ThingRepositoryContract;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Pagination\Paginator;
-
+use Illuminate\Support\Facades\URL;
 class AppServiceProvider extends ServiceProvider
 {
     /**
@@ -34,5 +34,9 @@ class AppServiceProvider extends ServiceProvider
     {
         // Like::observe(LikeObserver::class);
         Paginator::useBootstrap();
+        if (request()->isSecure()) {
+            \URL::forceScheme('https');
+        }
     }
+
 }
