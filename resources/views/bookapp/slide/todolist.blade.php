@@ -7,7 +7,6 @@
     <div class="row">
         <h1>今後実装しようとしていること一覧</h1>
         <ul class="list-group list-group-flush" style="margin-top:50px;">
-            <li class="list-group-item">ドメイン+SSL</li>
             <li class="list-group-item">パワポをPDFに変換する処理</li>
             <li class="list-group-item">スマホ対応</li>
             <li class="list-group-item">詳細ページのPDFをスライド形式にする</li>
@@ -23,6 +22,7 @@
             <li class="list-group-item disabled" aria-disabled="true"><s>書籍登録時、何を学んだかを書く項目追加</s></li>
             <li class="list-group-item disabled" aria-disabled="true"><s>pdfの登録バリデーション</s></li>
             <li class="list-group-item disabled" aria-disabled="true"><s>見える部分はニックネーム表記</s></li>
+            <li class="list-group-item disabled" aria-disabled="true"><s>ドメイン+SSL</s></li>
         </ul>
     </div>
 </div>
