@@ -24,8 +24,42 @@
     }
 }
 
+//footer
+footer{
+    margin-top:100px;
+    .footer-wrapper{
+        text-align: center;
+        .home{
+            padding-top:40px;
+            a{
+                color:white;
+                text-decoration: none;
+            }
+            span{
+                font-weight: bold;
+                font-size: 24px;
+            }
+        }
+        .link{
+            padding-top:10px;
+            a{
+                color:white;
+                text-decoration: none;
+                padding: 20px 10px;
+            }
+            a:hover{
+                font-weight: bold;
+            }
+        }
+    }
+    background-color: rgb(39, 38, 38);
+    height: 150px;
 
+}
+
+//
 // トップページ
+//
 .top-image {
     background: url('../images/top.jpg');
     height: 550px;
@@ -61,9 +95,54 @@ bottom: 0;
 left: 0;
 content: ' ';
 }
+// slides
+.slides-wrapper{
+    padding: 0 35px;
+    iframe{
+        box-shadow: 0 6px 30px 0 rgb(0 0 0 / 30%);
+    }
+    .card{
+        box-shadow: 0 6px 30px -7px rgb(0 0 0 / 30%),7px 7px 7px -7px rgb(0 0 0 / 30%);
+        .col-md-8{
+            padding-left: 5px;
+        }
+        .slides-text {
+            p{
+                margin: 0;
+            }
+            .card-body{
+                margin-top:37px;
+                padding-left:0;
+                h5{
+                    font-size: 13px;
+                    line-height: 20px;
+                    font-weight: bold;
+                    margin-bottom:0;
+                }
+                p{
+                    margin-top:5px;
+                    font-size: 12px;
+                }
+                .cardFooter{
+                    height: 30px;
+                    width: 100%;
+                    margin-top:20px;
+                    p{
+                        line-height: 15px;
+                        padding: 0;
+                        margin:0;
+                    }
+                }
+            }
+        }
+    }
+}
 
 
+
+//
 // slide.showページ
+//
 .main-wrapper{
 
     .btn-wrapper{

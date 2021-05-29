@@ -30,7 +30,6 @@
                     <a class="navbar-brand" href="{{ route('bookapp.slide.booklist') }}"><span>{{ __('BookList') }}</span></a>
                     <a class="navbar-brand" href="{{ route('bookapp.user.user') }}"><span>{{ __('Members') }}</span></a>
                     <a class="navbar-brand" href="{{ route('bookapp.slide.create') }}"><span>{{ __('Create') }}</span></a>
-                    <a class="navbar-brand" href="{{ route('bookapp.slide.todolist') }}"><span>{{ __('todolist') }}</span></a>
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                         <span class="navbar-toggler-icon"></span>
                     </button>
@@ -76,6 +75,17 @@
             @yield('content')
         </main>
     </div>
+    <footer>
+        <div class="footer-wrapper">
+            <div class="home"><a  href="{{ route('bookapp.slide.index') }}"><span>{{ __('OutBook') }}</span></a></div>
+            <div class="link">
+                <a class="" href="{{ route('bookapp.slide.booklist') }}"><span>{{ __('BookList') }}</span></a>
+                <a class="" href="{{ route('bookapp.user.user') }}"><span>{{ __('Members') }}</span></a>
+                <a class="" href="{{ route('bookapp.slide.create') }}"><span>{{ __('Create') }}</span></a>
+                <a class="" href="{{ route('bookapp.slide.todolist') }}"><span>{{ __('todolist') }}</span></a>
+            </div>
+        </div>
+    </footer>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js" integrity="sha384-q2kxQ16AaE6UbzuKqyBE9/u/KzioAlnx2maXQHiDX9d4/zp8Ok3f+M7DPm+Ib6IU" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.min.js" integrity="sha384-pQQkAEnwaBkjpqZ8RU1fF1AKtTcHJwFl3pblpTlHXybJjHpMYo79HY3hIi4NKxyj" crossorigin="anonymous"></script>
