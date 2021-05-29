@@ -7369,7 +7369,6 @@ button.bg-dark:focus {
 }
 
 .position-sticky {
-  position: -webkit-sticky !important;
   position: sticky !important;
 }
 
@@ -7389,9 +7388,8 @@ button.bg-dark:focus {
   z-index: 1030;
 }
 
-@supports ((position: -webkit-sticky) or (position: sticky)) {
+@supports (position: sticky) {
   .sticky-top {
-    position: -webkit-sticky;
     position: sticky;
     top: 0;
     z-index: 1020;
@@ -10017,6 +10015,37 @@ h3 {
   transition: all 0.2s;
 }
 
+footer {
+  margin-top: 100px;
+  background-color: #272626;
+  height: 150px;
+}
+footer .footer-wrapper {
+  text-align: center;
+}
+footer .footer-wrapper .home {
+  padding-top: 40px;
+}
+footer .footer-wrapper .home a {
+  color: white;
+  text-decoration: none;
+}
+footer .footer-wrapper .home span {
+  font-weight: bold;
+  font-size: 24px;
+}
+footer .footer-wrapper .link {
+  padding-top: 10px;
+}
+footer .footer-wrapper .link a {
+  color: white;
+  text-decoration: none;
+  padding: 20px 10px;
+}
+footer .footer-wrapper .link a:hover {
+  font-weight: bold;
+}
+
 .top-image {
   background: url("../images/top.jpg");
   height: 550px;
@@ -10052,6 +10081,46 @@ h3 {
   bottom: 0;
   left: 0;
   content: " ";
+}
+
+.slides-wrapper {
+  padding: 0 35px;
+}
+.slides-wrapper iframe {
+  box-shadow: 0 6px 30px 0 rgba(0, 0, 0, 0.3);
+}
+.slides-wrapper .card {
+  box-shadow: 0 6px 30px -7px rgba(0, 0, 0, 0.3), 7px 7px 7px -7px rgba(0, 0, 0, 0.3);
+}
+.slides-wrapper .card .col-md-8 {
+  padding-left: 5px;
+}
+.slides-wrapper .card .slides-text p {
+  margin: 0;
+}
+.slides-wrapper .card .slides-text .card-body {
+  margin-top: 37px;
+  padding-left: 0;
+}
+.slides-wrapper .card .slides-text .card-body h5 {
+  font-size: 13px;
+  line-height: 20px;
+  font-weight: bold;
+  margin-bottom: 0;
+}
+.slides-wrapper .card .slides-text .card-body p {
+  margin-top: 5px;
+  font-size: 12px;
+}
+.slides-wrapper .card .slides-text .card-body .cardFooter {
+  height: 30px;
+  width: 100%;
+  margin-top: 20px;
+}
+.slides-wrapper .card .slides-text .card-body .cardFooter p {
+  line-height: 15px;
+  padding: 0;
+  margin: 0;
 }
 
 .main-wrapper .btn-wrapper {
