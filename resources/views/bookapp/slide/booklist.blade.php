@@ -3,7 +3,7 @@
 @section('content')
 
 
-<div class="container " style="margin-top:100px;">
+<div class="container book-wrapper" style="margin-top:100px;">
     <div class="row">
         @foreach($slides as $slide)
         <div class="col-1 booklist" style="margin-top:30px;">

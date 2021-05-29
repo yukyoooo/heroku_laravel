@@ -10144,6 +10144,10 @@ footer .footer-wrapper .link a:hover {
   right: 20px;
 }
 
+.book-wrapper {
+  height: 90vh;
+}
+
 .booklist img {
   margin: 10px;
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
