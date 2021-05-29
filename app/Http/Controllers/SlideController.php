@@ -5,11 +5,13 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\bookApp;
 use App\Models\Tag;
+use App\Models\Teams;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Database\Eloquent\Builder;
 use App\Services\SendToS3;
 use App\Http\Requests\StoreSlides;
 use App\Http\Requests\UpdateSlides;
+
 
 class SlideController extends Controller
 {
@@ -49,6 +51,13 @@ class SlideController extends Controller
 
         $slide->save();
         $slide->tags()->attach(request()->tags);
+
+        #teams通知
+        $postLink="https://outbook.work/show/".$slide->id;
+        $messageTeams = "新しい投稿があったよ -> <a href=".$postLink.">新しい投稿へ</a>";
+        $webhookUrl = config('teams.outbook');
+        // dd($webhookUrl);
+        Teams::notice('新投稿!!', $messageTeams, $webhookUrl);
         return redirect('/');
     }
 
