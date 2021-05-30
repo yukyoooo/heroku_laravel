@@ -14,7 +14,7 @@ https://iritec.jp/web_service/6802/ -->
     </div>
     <div class="card mb-3" style="max-width: 540px; margin-top:-6px;">
         <div class="row g-0">
-            <div class="col-md-4" style="margin-top:20px;">
+            <div class="col-md-4" style="margin-top:5px;">
                 <img src="{{ $slide->image_path }}" alt="{{ $slide->book_title }}" width="100%" style="margin:10px; box-shadow: 2px 2px 5px rgba(0,0,0,0.2);">
             </div>
             <div class="col-md-8 slides-text">
@@ -24,14 +24,14 @@ https://iritec.jp/web_service/6802/ -->
                             <form action="{{ route('like.destroy', ['id' => $slide->id ]) }}" method="post">
                                 @method('delete')
                                 @csrf
-                                <button class="btn btn-brown rounded-pill" data-like="{{ $slide->id }}">
+                                <button class="btn btn-brown btn-sm rounded-pill" data-like="{{ $slide->id }}">
                                     <i class="far fa-thumbs-up"></i> {{ $slide->likes_count }}
                                 </button>
                             </form>
                         @else
                             <form action="{{ route('like.store', ['id' => $slide->id ]) }}" method="post">
                                 @csrf
-                                <button class="btn btn-outline-secondary rounded-pill" data-like="{{ $slide->id }}">
+                                <button class="btn btn-sm btn-outline-secondary rounded-pill" data-like="{{ $slide->id }}">
                                     <i class="far fa-thumbs-up"></i> {{ $slide->likes_count }}
                                 </button>
                             </form>
@@ -39,7 +39,7 @@ https://iritec.jp/web_service/6802/ -->
                     </div>
                     <p class="card-text float-left" style="margin-left:5px;">
                         @foreach($slide->tags as $tag)
-                        <span class="badge badge-pill badge-secondary" style="margin-top:16px; padding:7px;">{{ $tag->name }}</span>
+                        <span class="badge badge-pill badge-secondary" style="margin-top:10px; padding:7px;">{{ $tag->name }}</span>
                         @endforeach
                     </p>
                 </div>
@@ -47,7 +47,7 @@ https://iritec.jp/web_service/6802/ -->
                     <h5 class="card-title">{{ $slide->book_title }}</h5>
                     <p class="card-text">{{ Str::limit($slide->book_detail, 50, '(…)' ) }}</p>
                     <div class="cardFooter">
-                        <div class="float-left" style="margin-top:3px;">
+                        <div class="float-left" style="">
                             <p class="card-text"><small class="text-muted">Date : {{ $slide->created_at->format('Y.m.d') }}</small></p>
                             <p class="card-text"><small  class="text-muted">Name :
                                 @if($slide->user->nickname)
@@ -57,7 +57,7 @@ https://iritec.jp/web_service/6802/ -->
                                 @endif
                             </small></p>
                         </div>
-                        <a class="btn float-right btn-brown" href="{{ route('bookapp.slide.show', ['id' => $slide->id ]) }}" role="button"><i class="far fa-comment-dots"> {{ $slide->comments->count()}} </i>　詳細</a>
+                        <a class="btn btn-sm float-right btn-brown" href="{{ route('bookapp.slide.show', ['id' => $slide->id ]) }}" role="button"><i class="far fa-comment-dots"> {{ $slide->comments->count()}} </i>　詳細</a>
                     </div>
                 </div>
             </div>
