@@ -10101,6 +10101,27 @@ h3 {
   margin: 0;
 }
 
+.main-wrapper .btn-wrapper {
+  position: absolute;
+  top: 500px;
+  left: 50px;
+}
+.main-wrapper .btn-wrapper a {
+  font-size: 80px;
+  color: gray;
+  cursor: pointer;
+  padding: 0px 3px;
+}
+.main-wrapper .btn-wrapper a :hover {
+  color: black;
+  transition: color 0.5s;
+}
+.main-wrapper .card .main-card-body .card-body .edit_delete_wrapper {
+  position: absolute;
+  bottom: 0px;
+  right: 20px;
+}
+
 .book-wrapper {
   height: 90vh;
 }
@@ -10140,8 +10161,8 @@ footer .footer-wrapper .link {
 footer .footer-wrapper .link a {
   color: white;
   text-decoration: none;
-  padding: 20px 10px;
+  padding: 20px 5px 2px 5px;
 }
 footer .footer-wrapper .link a:hover {
-  font-weight: bold;
+  border-bottom: 1px solid white;
 }

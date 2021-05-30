@@ -33,24 +33,24 @@
             </div> -->
             <div class="card mb-3">
                 <div class="row g-0">
-                    <div class="col-md-3">
+                    <div class="col-md-3 main-card-img">
                         <img src="{{ $slide->image_path }}" alt="{{ $slide->book_title }}" width="100%" style="margin:20px; box-shadow: 2px 2px 5px rgba(0,0,0,0.2);">
                     </div>
-                    <div class="col-md-9 ">
+                    <div class="col-md-9 main-card-body">
                         <div class="float-right"style="margin:10px;">
                             @if($slide->liked)
                                 <form action="{{ route('like.destroy', $slide) }}" method="post">
                                     @method('delete')
                                     @csrf
-                                    <button class="btn btn-primary btn-sm" data-like="{{ $slide->id }}">
-                                        いいね <[ {{ $slide->likes_count }} ]
+                                    <button class="btn btn-brown" data-like="{{ $slide->id }}">
+                                        <i class="far fa-thumbs-up"></i> {{ $slide->likes_count }}
                                     </button>
                                 </form>
                             @else
                                 <form action="{{ route('like.store', $slide) }}" method="post">
                                     @csrf
-                                    <button class="btn btn-outline-secondary btn-sm" data-like="{{ $slide->id }}">
-                                        いいね <[ {{ $slide->likes_count }} ]
+                                    <button class="btn btn-outline-secondary" data-like="{{ $slide->id }}">
+                                        <i class="far fa-thumbs-up"></i> {{ $slide->likes_count }}
                                     </button>
                                 </form>
                             @endif

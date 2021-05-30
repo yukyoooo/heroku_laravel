@@ -20,9 +20,16 @@
         }
     }
 
-    .edit_delete_wrapper{
-        position: absolute;
-        bottom:0px;
-        right:20px;
+    .card{
+        .main-card-body{
+            .card-body{
+                .edit_delete_wrapper{
+                    position: absolute;
+                    bottom:0px;
+                    right:20px;
+                }
+            }
+        }
     }
+
 }

@@ -24,7 +24,7 @@
                 </div>
             @endif
             <div class="mt-4 float-right">
-                <button type="submit" class="btn btn-primary">コメント</button>
+                <button type="submit" class="btn btn-brown">コメント</button>
             </div>
         </div>
     </form>
