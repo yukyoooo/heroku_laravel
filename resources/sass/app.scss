@@ -1,209 +1,21 @@
 // Fonts
 @import url('https://fonts.googleapis.com/css?family=Nunito');
-
+// Bootstrap
+@import '~bootstrap/scss/bootstrap';
 // Variables
 @import 'variables';
 
-// Bootstrap
-@import '~bootstrap/scss/bootstrap';
-
-//btn-brown
-.btn-brown{
-    color: #fff;
-    border-color: $brown;
-    background-color: $brown;
-    &:hover{
-        color: #fff;
-        border-color: darken($brown, 10%);
-        background-color: darken($brown, 10%);
-    }
-}
-//ナビバー
-.navbar{
-    a{
-        font-weight: bold;
-    }
-    span{
-        transition: all 0.2s;
-    }
-    span:hover{
-        color:darken($brown, 20%);
-        border-bottom:solid 2px $brown;
-        padding-bottom:-3px;
-        transition: all 0.2s;
-
-    }
-}
-
-//footer
-footer{
-    margin-top:100px;
-    .footer-wrapper{
-        text-align: center;
-        .home{
-            padding-top:40px;
-            a{
-                color:white;
-                text-decoration: none;
-            }
-            span{
-                font-weight: bold;
-                font-size: 24px;
-            }
-        }
-        .link{
-            padding-top:10px;
-            a{
-                color:white;
-                text-decoration: none;
-                padding: 20px 10px;
-            }
-            a:hover{
-                font-weight: bold;
-            }
-        }
-    }
-    background-color: rgb(39, 38, 38);
-    height: 150px;
-
-}
-
-//
-// トップページ
-//
-.top-image {
-    background: url('../images/top.jpg');
-    height: 550px;
-    background-size: cover;
-    position: relative;
-    h1 {
-        position: absolute;
-        width: 100%;
-        text-align: center;
-        color:white;
-        font-weight: bold;
-        top:210px;
-        font-size: 78px;
-    }
-    p{
-        position: absolute;
-        width: 100%;
-        text-align: center;
-        color:rgba(255, 255, 255, 0.769);
-        font-weight: bold;
-        top:310px;
-        font-size: 18px;
-    }
-}
-.top-image::before{
-/* 透過した黒を上から重ねるイメージ */
-background-color: rgba(0,0,0,0.6);
-/* 自由に位置指定 */
-position: absolute;
-top: 0;
-right: 0;
-bottom: 0;
-left: 0;
-content: ' ';
-}
-// slides
-.slides-wrapper{
-    // padding: 0 35px;
-    .iframe-wrapper{
-        box-shadow: 1px 7px 7px 0px rgba(0,0,0,0.1);
-        border-top: 8px solid darken( $brown, 10% );
-        border-radius: 5px 5px 0 0;
-    }
-    .card{
-        box-shadow: 0px 10px 7px -7px rgba(0,0,0,0.1),
-        7px 7px 7px -7px rgba(0,0,0,0.1);
-        border-radius: 0 0 5px 5px;
-        .col-md-8{
-            padding-left: 10px;
-        }
-        .slides-text {
-            p{
-                margin: 0;
-            }
-            .card-body{
-                margin-top:34px;
-                padding:15px 15px 15px 0;
-                h5{
-                    font-size: 13px;
-                    line-height: 20px;
-                    font-weight: bold;
-                    margin-bottom:0;
-                    border-bottom: 1px solid  $brown;
-                }
-                p{
-                    margin-top:5px;
-                    font-size: 12px;
-                }
-                .cardFooter{
-                    height: 30px;
-                    width: 100%;
-                    margin-top:20px;
-                    p{
-                        line-height: 15px;
-                        padding: 0;
-                        margin:0;
-                    }
-                }
-            }
-        }
-    }
-}
+@import 'slideIndex';
+@import 'slideBooklist';
+@import 'footer';
 
 
 
-//
-// slide.showページ
-//
-.main-wrapper{
-
-    .btn-wrapper{
-        position: absolute;
-        top:500px;
-        left:50px;
-        a{
-            font-size: 80px;
-            color:gray;
-            cursor: pointer;
-            padding:0px 3px;
-            :hover{
-                color:black;
-                transition: color 0.5s;
-            }
-        }
-    }
-
-    .edit_delete_wrapper{
-        position: absolute;
-        bottom:0px;
-        right:20px;
-    }
-}
-
-
-//
-// booklistページ
-//
-.book-wrapper{
-    height: 90vh;
-}
 
 
 
-// slide.booklistページ
-.booklist{
-    img{
-        margin:10px;
-        box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
-        transition: all 0.2s;
-    }
-    img:hover{
-        box-shadow: 0 5px 10px black;
-        transform: translate(0, -5px);
-    }
-}
+
+
+
+
 

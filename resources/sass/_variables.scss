@@ -17,6 +17,35 @@ $yellow: #ffed4a;
 $base-green: #187940;
 $teal: #4dc0b5;
 $cyan: #6cb2eb;
-$brown: #b3642b
+$brown: #b3642b;
+
+//btn-brown
+.btn-brown{
+    color: #fff;
+    border-color: $brown;
+    background-color: $brown;
+    &:hover{
+        color: #fff;
+        border-color: darken($brown, 10%);
+        background-color: darken($brown, 10%);
+    }
+}
+
+//ナビバー
+.navbar{
+    a{
+        // font-weight: bold;
+    }
+    span{
+        transition: all 0.2s;
+    }
+    span:hover{
+        color:darken($brown, 20%);
+        border-bottom:solid 2px $brown;
+        padding-bottom:-3px;
+        transition: all 0.2s;
+
+    }
+}
 
 
