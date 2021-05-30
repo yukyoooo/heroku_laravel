@@ -3,13 +3,15 @@ PDFのパラメータまとめ
 https://iritec.jp/web_service/6802/ -->
 @foreach($slides as $slide)
 <div class="col-4 slides-wrapper" style="margin-top:100px;">
-    <iframe id="main-slide"
-        class="card-img-top" alt="..."
-        src="{{ $slide->slides_path}}#toolbar=0&view=FitH"
-        width="100%"
-        height="200"
-        style=" border: none;">
-    </iframe>
+    <div class="iframe-wrapper">
+        <iframe id="main-slide"
+            class="card-img-top" alt="..."
+            src="{{ $slide->slides_path}}#toolbar=0&view=FitH"
+            width="100%"
+            height="200"
+            style=" border: none;">
+        </iframe>
+    </div>
     <div class="card mb-3" style="max-width: 540px; margin-top:-6px;">
         <div class="row g-0">
             <div class="col-md-4" style="margin-top:20px;">
@@ -22,7 +24,7 @@ https://iritec.jp/web_service/6802/ -->
                             <form action="{{ route('like.destroy', ['id' => $slide->id ]) }}" method="post">
                                 @method('delete')
                                 @csrf
-                                <button class="btn btn-primary rounded-pill" data-like="{{ $slide->id }}">
+                                <button class="btn btn-success rounded-pill" data-like="{{ $slide->id }}">
                                     <i class="far fa-thumbs-up"></i> {{ $slide->likes_count }}
                                 </button>
                             </form>
@@ -45,9 +47,9 @@ https://iritec.jp/web_service/6802/ -->
                     <h5 class="card-title">{{ $slide->book_title }}</h5>
                     <p class="card-text">{{ Str::limit($slide->book_detail, 50, '(…)' ) }}</p>
                     <div class="cardFooter">
-                        <div class="float-left">
+                        <div class="float-left" style="margin-top:3px;">
                             <p class="card-text"><small class="text-muted">Date : {{ $slide->created_at->format('Y.m.d') }}</small></p>
-                            <p><small>Name :
+                            <p class="card-text"><small  class="text-muted">Name :
                                 @if($slide->user->nickname)
                                     {{ $slide->user->nickname}}
                                 @else
@@ -55,7 +57,7 @@ https://iritec.jp/web_service/6802/ -->
                                 @endif
                             </small></p>
                         </div>
-                        <a class="btn float-right btn-sm btn-primary" href="{{ route('bookapp.slide.show', ['id' => $slide->id ]) }}" role="button"><i class="far fa-comment-dots"> {{ $slide->comments->count()}} </i>　詳細</a>
+                        <a class="btn float-right btn-success" href="{{ route('bookapp.slide.show', ['id' => $slide->id ]) }}" role="button"><i class="far fa-comment-dots"> {{ $slide->comments->count()}} </i>　詳細</a>
                     </div>
                 </div>
             </div>
