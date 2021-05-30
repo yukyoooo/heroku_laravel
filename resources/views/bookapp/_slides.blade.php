@@ -24,7 +24,7 @@ https://iritec.jp/web_service/6802/ -->
                             <form action="{{ route('like.destroy', ['id' => $slide->id ]) }}" method="post">
                                 @method('delete')
                                 @csrf
-                                <button class="btn btn-success rounded-pill" data-like="{{ $slide->id }}">
+                                <button class="btn btn-brown rounded-pill" data-like="{{ $slide->id }}">
                                     <i class="far fa-thumbs-up"></i> {{ $slide->likes_count }}
                                 </button>
                             </form>
@@ -57,7 +57,7 @@ https://iritec.jp/web_service/6802/ -->
                                 @endif
                             </small></p>
                         </div>
-                        <a class="btn float-right btn-success" href="{{ route('bookapp.slide.show', ['id' => $slide->id ]) }}" role="button"><i class="far fa-comment-dots"> {{ $slide->comments->count()}} </i>　詳細</a>
+                        <a class="btn float-right btn-brown" href="{{ route('bookapp.slide.show', ['id' => $slide->id ]) }}" role="button"><i class="far fa-comment-dots"> {{ $slide->comments->count()}} </i>　詳細</a>
                     </div>
                 </div>
             </div>

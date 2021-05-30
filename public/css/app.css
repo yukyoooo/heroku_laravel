@@ -10002,6 +10002,17 @@ h3 {
     border-color: #dee2e6;
   }
 }
+.btn-brown {
+  color: #fff;
+  border-color: #b3642b;
+  background-color: #b3642b;
+}
+.btn-brown:hover {
+  color: #fff;
+  border-color: #8a4d21;
+  background-color: #8a4d21;
+}
+
 .navbar a {
   font-weight: bold;
 }
@@ -10009,8 +10020,8 @@ h3 {
   transition: all 0.2s;
 }
 .navbar span:hover {
-  color: #187940;
-  border-bottom: solid 2px #20a457;
+  color: #613617;
+  border-bottom: solid 2px #b3642b;
   padding-bottom: -3px;
   transition: all 0.2s;
 }
@@ -10085,7 +10096,7 @@ footer .footer-wrapper .link a:hover {
 
 .slides-wrapper .iframe-wrapper {
   box-shadow: 1px 7px 7px 0px rgba(0, 0, 0, 0.1);
-  border-top: 8px solid #20a457;
+  border-top: 8px solid #8a4d21;
   border-radius: 5px 5px 0 0;
 }
 .slides-wrapper .card {
@@ -10107,7 +10118,7 @@ footer .footer-wrapper .link a:hover {
   line-height: 20px;
   font-weight: bold;
   margin-bottom: 0;
-  border-bottom: 1px solid #20a457;
+  border-bottom: 1px solid #b3642b;
 }
 .slides-wrapper .card .slides-text .card-body p {
   margin-top: 5px;
