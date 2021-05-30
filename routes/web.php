@@ -43,8 +43,7 @@ Route::middleware(['auth'])->prefix('mypage')->group(function () {
 });
 
 //いいね機能
-Route::post('/{id}/likes', [LikeController::class, 'store'])->name('like.store');
-Route::delete('/{id}/likes', [LikeController::class, 'destroy'])->name('like.destroy');
+Route::post('/like', [LikeController::class, 'like'])->name('like.like');
 
 //contactform
 Route::middleware(['auth'])->prefix('contact')->group(function () {

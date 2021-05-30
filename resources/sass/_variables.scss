@@ -48,4 +48,18 @@ $brown: #b3642b;
     }
 }
 
+//likedボタン
+.like-wrapper{
+    color: $brown;
+
+    i{
+        &:hover{
+            color:lighten($brown, 20%);
+            cursor: pointer;
+        }
+    }
+    .liked {
+        font-weight: bold;
+    }
+}
 

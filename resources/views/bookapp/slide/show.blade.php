@@ -39,20 +39,15 @@
                     <div class="col-md-9 main-card-body">
                         <div class="float-right"style="margin:10px;">
                             @if($slide->liked)
-                                <form action="{{ route('like.destroy', $slide) }}" method="post">
-                                    @method('delete')
-                                    @csrf
-                                    <button class="btn btn-brown" data-like="{{ $slide->id }}">
-                                        <i class="far fa-thumbs-up"></i> {{ $slide->likes_count }}
-                                    </button>
-                                </form>
+                                <div class="like-wrapper">
+                                    <i class="far fa-thumbs-up like-toggle liked" data-slide-id="{{ $slide->id }}" ></i>
+                                    <span class="like-counter">{{ $slide->likes_count }}</span>
+                                </div>
                             @else
-                                <form action="{{ route('like.store', $slide) }}" method="post">
-                                    @csrf
-                                    <button class="btn btn-outline-secondary" data-like="{{ $slide->id }}">
-                                        <i class="far fa-thumbs-up"></i> {{ $slide->likes_count }}
-                                    </button>
-                                </form>
+                                <div class="like-wrapper">
+                                    <i class="far fa-thumbs-up like-toggle" data-slide-id="{{ $slide->id }}" ></i>
+                                    <span class="like-counter">{{ $slide->likes_count }}</span>
+                                </div>
                             @endif
                         </div>
                         <p class="card-text">

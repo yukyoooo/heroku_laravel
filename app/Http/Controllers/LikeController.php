@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Thing;
 use App\Models\Like;
 use App\Models\bookApp;
 use App\Repositories\Contracts\LikeRepository;
 use Illuminate\Http\Request;
+use Illuminate\Database\Eloquent\Builder;
 
 /**
  * Class LikeController
@@ -24,21 +24,27 @@ class LikeController extends Controller
         $this->likes = $likes;
     }
 
-    public function store(bookApp $id, Request $request)
+    public function like(Request $request)
     {
-        $like = Like::firstOrCreate([
-            'book_app_id' => $id->id,
-            'ip' => $request->ip(),
-        ]);
-        return redirect()->route('bookapp.slide.index');
-    }
-
-    public function destroy(bookApp $id, Request $request)
-    {
-        Like::where('book_app_id', '=', $id->id)
-            ->where('ip', '=', $request->ip())
+        $ip = $request->ip(); //1.いいねをしたipアドレスを取得
+        $slide_id = $request->slide_id; //2.投稿idの取得
+        $already_liked = Like::where('book_app_id',$slide_id)->where('ip',$ip)->first();
+        if (!$already_liked) { //もしこのユーザーがこの投稿にまだいいねしてなかったら
+            $like = new Like; //4.Likeクラスのインスタンスを作成
+            $like->book_app_id = $slide_id; //Likeインスタンスにreview_id,user_idをセット
+            $like->ip = $ip;
+            $like->save();
+        } else { //もしこのユーザーがこの投稿に既にいいねしてたらdelete
+            Like::where('book_app_id', $slide_id)
+            ->where('ip', $ip)
             ->delete();
+        }
+        //5.この投稿の最新の総いいね数を取得
+        $slide_likes_count = bookApp::withCount('likes')->findOrFail($slide_id)->likes_count;
 
-        return redirect()->route('bookapp.slide.index');
+        $param = [
+            'slide_likes_count' => $slide_likes_count,
+        ];
+        return response()->json($param); //6.JSONデータをjQueryに返す
     }
 }

@@ -10023,6 +10023,17 @@ h3 {
   transition: all 0.2s;
 }
 
+.like-wrapper {
+  color: #b3642b;
+}
+.like-wrapper i:hover {
+  color: #db9969;
+  cursor: pointer;
+}
+.like-wrapper .liked {
+  font-weight: bold;
+}
+
 .top-image {
   background: url("../images/top.jpg");
   height: 550px;
