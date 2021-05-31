@@ -40,7 +40,9 @@ https://iritec.jp/web_service/6802/ -->
                 </div>
                 <div class="card-body" >
                     <h5 class="card-title">{{ $slide->book_title }}</h5>
-                    <p class="card-text">{{ Str::limit($slide->book_detail, 50, '(…)' ) }}</p>
+                    <div class="card-text-wrapper">
+                        <p class="card-text">{{ Str::limit($slide->book_detail, 50, '(…)' ) }}</p>
+                    </div>
                     <div class="cardFooter">
                         <div class="float-left" style="">
                             <p class="card-text"><small class="text-muted">Date : {{ $slide->created_at->format('Y.m.d') }}</small></p>

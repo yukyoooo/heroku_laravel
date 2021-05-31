@@ -71,10 +71,18 @@ content: ' ';
                     margin-top:5px;
                     font-size: 12px;
                 }
+                .card-text-wrapper{
+                    margin-top:8px;
+                    P{
+                        border-radius: 5px;
+                        padding:5px 10px;
+                        background-color: lighten($brown, 50%);
+                    }
+                }
                 .cardFooter{
                     height: 30px;
                     width: 100%;
-                    margin-top:20px;
+                    margin-top:10px;
                     p{
                         line-height: 15px;
                         padding: 0;

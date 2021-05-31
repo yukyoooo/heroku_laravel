@@ -10157,10 +10157,18 @@ h3 {
   margin-top: 5px;
   font-size: 12px;
 }
+.slides-wrapper .card .slides-text .card-body .card-text-wrapper {
+  margin-top: 8px;
+}
+.slides-wrapper .card .slides-text .card-body .card-text-wrapper P {
+  border-radius: 5px;
+  padding: 5px 10px;
+  background-color: #f9ede4;
+}
 .slides-wrapper .card .slides-text .card-body .cardFooter {
   height: 30px;
   width: 100%;
-  margin-top: 20px;
+  margin-top: 10px;
 }
 .slides-wrapper .card .slides-text .card-body .cardFooter p {
   line-height: 15px;
