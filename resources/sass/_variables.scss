@@ -61,5 +61,35 @@ $brown: #b3642b;
     .liked {
         font-weight: bold;
     }
+    .fa-thumbs-up{
+        animation: pyonpyon 3s infinite ease;
+    }
+    @keyframes pyonpyon {
+    0% {
+        transform: translate(0, 0);
+    }
+    5% {
+        transform: translate(0, 0);
+    }
+    10% {
+        transform: translate(0, 0);
+    }
+    20% {
+        transform: translate(0, -2px);
+    }
+    25% {
+        transform: translate(0, 0);
+    }
+    30% {
+        transform: translate(0, -2px);
+    }
+    50% {
+        transform: translate(0, 0);
+    }
+    100% {
+        transform: translate(0, 0);
+    }
+    }
+
 }
 
