@@ -34,7 +34,7 @@
             <div class="card mb-3">
                 <div class="row g-0">
                     <div class="col-md-3 main-card-img">
-                        <img src="{{ $slide->image_path }}" alt="{{ $slide->book_title }}" width="100%" style="margin:20px; box-shadow: 2px 2px 5px rgba(0,0,0,0.2);">
+                        <img src="{{ $slide->image_path }}" alt="{{ $slide->book_title }}" width="100%" style="margin:40px 20px 20px 20px; box-shadow: 2px 2px 5px rgba(0,0,0,0.2);">
                     </div>
                     <div class="col-md-9 main-card-body">
                         <div class="float-right"style="margin:10px;">
@@ -52,23 +52,28 @@
                         </div>
                         <p class="card-text">
                             @foreach($slide->tags as $tag)
-                            <span class="badge badge-pill badge-secondary" style="margin-top:20px; padding:7px;">{{ $tag->name }}</span>
+                            <span class="badge badge-pill badge-secondary" style="margin:20px 0 0 20px; padding:10px;">{{ $tag->name }}</span>
                             @endforeach
                         </p>
-                        <div class="card-body" style="margin-top:20px">
+                        <div class="card-body">
                             <h5 class="card-title">{{ $slide->book_title }}</h5>
-                            <label>紹介文</label>
-                            <p class="card-text">{{ $slide->book_detail }}</p>
-                            <label>学んだこと</label>
-                            <p class="card-text">{{ $slide->output }}</p>
-                            <p class="card-text">
-                                <small class="text-muted">{{ $slide->created_at }}<br>
+                            <div class="card-body-text">
+                                <label>紹介文</label>
+                                <p class="">{{ $slide->book_detail }}</p>
+                            </div>
+                            <div class="card-body-text">
+                                <label>学んだこと</label>
+                                <p class="">{{ $slide->output }}</p>
+                            </div>
+
+                            <p class="card-text" style="margin-top:10px;">
+                                <small class="text-muted">
                                 @if($slide->user->nickname)
-                                    {{ $slide->user->nickname }}
+                                    {{ $slide->user->nickname }}　
                                 @else
-                                    {{ $slide->user->name }}
+                                    {{ $slide->user->name }}　
                                 @endif
-                                </small></p>
+                                {{ $slide->created_at }}</small></p>
                         </div>
                         @auth
                             @if( ( $slide->user->id ) === ( Auth::user()->id ) )
