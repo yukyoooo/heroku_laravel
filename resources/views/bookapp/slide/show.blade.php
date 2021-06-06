@@ -65,7 +65,16 @@
                                 <label>学んだこと</label>
                                 <p class="">{{ $slide->output }}</p>
                             </div>
-
+                            <p class="card-text" style="margin-top:10px;">
+                                <small class="text-muted">
+                                @if($slide->book_author)
+                                    著者：{{ $slide->book_author }}
+                                @endif
+                                <br>
+                                @if($slide->book_publishedDate)
+                                    出版日：{{ $slide->book_publishedDate }}
+                                @endif
+                                </small></p>
                             <p class="card-text" style="margin-top:10px;">
                                 <small class="text-muted">
                                 @if($slide->user->nickname)

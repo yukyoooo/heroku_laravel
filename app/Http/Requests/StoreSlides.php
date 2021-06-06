@@ -24,9 +24,6 @@ class StoreSlides extends FormRequest
     public function rules()
     {
         return [
-            'book_title' => 'required|string|max:50',
-            'book_detail' => 'max:500',
-            'image' => 'required|image',
             'slides_pdf' => 'required|mimes:pdf',
         ];
     }

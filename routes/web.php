@@ -26,6 +26,7 @@ Route::get('/show/{id}', [SlideController::class, 'show'])->name('bookapp.slide.
 Route::get('/booklist', [SlideController::class, 'index_booklist'])->name('bookapp.slide.booklist');
 Route::get('/todolist', [SlideController::class, 'todolist'])->name('bookapp.slide.todolist');
 Route::middleware(['auth'])->group(function () {
+    Route::get('/selectBook', [SlideController::class, 'selectBook'])->name('bookapp.slide.selectBook');
     Route::get('/create', [SlideController::class, 'create'])->name('bookapp.slide.create');
     Route::post('/store', [SlideController::class, 'store'])->name('bookapp.slide.store');
     Route::get('/edit/{id}', [SlideController::class, 'edit'])->name('bookapp.slide.edit');

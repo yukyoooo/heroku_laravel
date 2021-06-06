@@ -15,37 +15,13 @@
                     @endif
                     <form method="POST"  action="{{ route('bookapp.slide.store') }}" enctype="multipart/form-data">
                     @csrf
-                        <div class="mb-3">
-                            <label for="formFile" class="form-label">書籍画像(必須)</label>
-                            <input class="form-control {{ $errors->has('image') ? 'is-invalid' : '' }}" type="file" id="formFile" name="image">
-                            @error('image')
-                                <div class="invalid-feedback">{{ $message }}</div>
-                            @enderror
-                        </div>
+
 
                         <div class="mb-3">
                             <label for="formFile" class="form-label">PPTのPDF(必須)</label>
                             <input class="form-control {{ $errors->has('slides_pdf') ? 'is-invalid' : '' }}" type="file" id="formFile" name="slides_pdf">
                             @error('slides_pdf')
                                 <div class="invalid-feedback">{{ $message }}</div>
-                            @enderror
-                        </div>
-
-
-                        <div class="mb-3">
-                            <label class="form-label">本のタイトル(必須)</label>
-                            <input type="text" name="book_title" class="form-control {{ $errors->has('book_title') ? 'is-invalid' : '' }}">
-                            @error('book_title')
-                                <div class="invalid-feedback">{{ $message }}</div>
-                            @enderror
-                        </div>
-
-                        <div class="mb-3">
-                            <label class="form-label">紹介文</label>
-                            <textarea type="text" name="book_detail" class="form-control {{ $errors->has('book_detail.max') ? 'is-invalid' : '' }}"></textarea>
-                            <div  class="form-text">本について概要や感想、紹介文を記入してください</div>
-                            @error('book_detail.max')
-                                <div class="invalid-feedback">500文字以内におさめてください。</div>
                             @enderror
                         </div>
 
@@ -71,8 +47,24 @@
                         </div>
 
                         <div class="mb-3">
-                            <label for="exampleInputEmail1" class="form-label">作成者:{{ $member->name }}</label><br>
-                            @if($member->nickname)<label for="exampleInputEmail1" class="form-label">ニックネーム：{{ $member->nickname}}</label>@endif
+                            <input type="hidden" name="book_img" value="{{ $book->book_img}}">
+                            <img src="{{$book->book_img}}">
+                        </div>
+                        <div class="mb-3">
+                            <input type="hidden" name="book_title" value="{{ $book->book_title}}">
+                            タイトル：{{$book->book_title}}
+                        </div>
+                        <div class="mb-3">
+                            <input type="hidden" name="book_detail" value="{{ $book->book_detail}}">
+                            概要：{{$book->book_detail}}
+                        </div>
+                        <div class="mb-3">
+                            <input type="hidden" name="book_author" value="{{ $book->book_author}}">
+                            著者：{{$book->book_author}}
+                        </div>
+                        <div class="mb-3">
+                            <input type="hidden" name="book_publishedDate" value="{{ $book->book_publishedDate}}">
+                            出版日：{{$book->book_publishedDate}}
                         </div>
                         <input class="float-right btn btn-primary" type="submit" value="登録する">
                     </form>

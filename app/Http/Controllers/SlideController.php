@@ -6,11 +6,13 @@ use Illuminate\Http\Request;
 use App\Models\bookApp;
 use App\Models\Tag;
 use App\Models\Teams;
+use App\Models\googleBookApi;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Database\Eloquent\Builder;
 use App\Services\SendToS3;
 use App\Http\Requests\StoreSlides;
 use App\Http\Requests\UpdateSlides;
+
 
 
 class SlideController extends Controller
@@ -28,13 +30,19 @@ class SlideController extends Controller
         return view('bookapp.slide.index', compact('slides'));
     }
 
-
-
-    public function create()
+    public function selectBook(Request $request)
     {
+        $books = [];
+        $books = googleBookApi::getBooks($request->keyword);
+        return view('bookapp.slide.selectBook', ['books' => $books]);
+    }
+
+    public function create(Request $request)
+    {
+        $book = $request;
         $member =Auth::user();
         $tags = Tag::all();
-        return view('bookapp.slide.create', ['member' => $member, 'tags'=>$tags]);
+        return view('bookapp.slide.create', ['member' => $member, 'tags'=>$tags, 'book'=>$book]);
     }
 
 
@@ -42,11 +50,14 @@ class SlideController extends Controller
     public function store(StoreSlides $request)
     {
         $slide = new bookApp;
-        $slide->user_id = Auth::id();;
+        $slide->user_id = Auth::id();
         $slide->book_title = $request->book_title;
         $slide->book_detail = $request->book_detail;
+        $slide->book_author = $request->book_author;
+        $slide->book_publishedDate = $request->book_publishedDate;
         $slide->output = $request->book_output;
-        $slide->image_path = SendToS3::sendImage($request->file('image'));
+        $slide->image_path = $request->book_img;
+        // dd($slide);
         $slide->slides_path = SendToS3::sendPDF($request->file('slides_pdf'));
 
         $slide->save();
