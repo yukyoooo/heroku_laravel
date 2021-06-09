@@ -10021,7 +10021,7 @@ h3 {
 }
 .navbar span:hover {
   color: #613617;
-  border-bottom: solid 3px #b3642b;
+  border-bottom: solid 2px #b3642b;
   padding-bottom: -3px;
   transition: all 0.2s;
 }

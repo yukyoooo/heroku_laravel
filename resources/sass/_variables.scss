@@ -41,7 +41,7 @@ $brown: #b3642b;
     }
     span:hover{
         color:darken($brown, 20%);
-        border-bottom:solid 3px $brown;
+        border-bottom:solid 2px $brown;
         padding-bottom:-3px;
         transition: all 0.2s;
 
