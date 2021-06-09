@@ -10014,7 +10014,7 @@ h3 {
 }
 
 .navbar a {
-  font-weight: bold;
+  font-weight: 600;
 }
 .navbar span {
   transition: all 0.2s;
