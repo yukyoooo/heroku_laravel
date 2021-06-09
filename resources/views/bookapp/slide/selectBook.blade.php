@@ -14,7 +14,7 @@
             </form>
 
             @if ($books['items'] == null)
-                <p>書籍名を入力してください。</p>
+                <p style="height:330px;">書籍名を入力してください。</p>
             @else (count($books['items']) > 0)
                 <p>「{{ $books['keyword'] }}」の検索結果です。読んだ本を選択してください</p>
             <div class="row justify-content-center">
