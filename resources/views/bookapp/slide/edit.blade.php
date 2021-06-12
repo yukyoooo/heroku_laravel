@@ -38,7 +38,7 @@
                             @enderror
                         </div>
                         <div class="mb-3">
-                            <label class="form-label">紹介文</label>
+                            <label class="form-label">概要</label>
                             <textarea type="text" rows="5" name="book_detail" class="form-control {{ $errors->has('book_detail.max') ? 'is-invalid' : '' }}">{{ $slide->book_detail }}</textarea>
                             @error('book_detail.max')
                                 <div class="invalid-feedback">500文字以内におさめてください。</div>
@@ -61,6 +61,14 @@
                                     </label>
                                 </div>
                             @endforeach
+                        </div>
+                        <div class="mb-3">
+                            <label for="text" class="form-label">著者</label>
+                            <input class="form-control" value="{{ $slide->book_author}}" type="text" name="book_author">
+                        </div>
+                        <div class="mb-3">
+                            <label for="text" class="form-label">出版日</label>
+                            <input class="form-control" value="{{ $slide->book_publishedDate}}" type="text" name="book_publishedDate">
                         </div>
                         <input class="float-right btn btn-primary" type="submit" value="修正">
                     </form>

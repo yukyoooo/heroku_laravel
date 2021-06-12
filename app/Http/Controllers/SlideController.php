@@ -100,6 +100,8 @@ class SlideController extends Controller
         $slide->book_title = $request->book_title;
         $slide->book_detail = $request->book_detail;
         $slide->output = $request->book_output;
+        $slide->book_author = $request->book_author;
+        $slide->book_publishedDate = $request->book_publishedDate;
         if(null !== $request->file('image')){
             $slide->image_path = SendToS3::sendImage($request->file('image'));
         }
