@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="container">
-    <div class="row justify-content-center members-wrapper">
+    <div class="row  members-wrapper">
         @foreach($users as $user)
         <div class="col-3" style="margin-top:30px;">
             <a href="{{ route('bookapp.user.show', ['id' => $user->id ]) }}">
