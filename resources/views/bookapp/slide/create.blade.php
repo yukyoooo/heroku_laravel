@@ -45,26 +45,31 @@
                                 </div>
                             @endforeach
                         </div>
-
                         <div class="mb-3">
-                            <input type="hidden" name="book_img" value="{{ $book->book_img}}">
+                            <p>---------------以下自動取得--------------</p>
+                        </div>
+                        <div class="mb-3">
                             <img src="{{$book->book_img}}">
+                            <input type="hidden" name="book_img" value="{{ $book->book_img}}">
+                            <br>
+                            <label for="formFile" class="form-label">書籍画像ない場合または変更したい場合はアップロードしてください</label>
+                            <input class="form-control" type="file" id="formFile" name="upload_book_img">
                         </div>
                         <div class="mb-3">
-                            <input type="hidden" name="book_title" value="{{ $book->book_title}}">
-                            タイトル：{{$book->book_title}}
+                            <label for="text" class="form-label">タイトル</label>
+                            <input class="form-control" value="{{ $book->book_title}}" type="text" name="book_title">
                         </div>
                         <div class="mb-3">
-                            <input type="hidden" name="book_detail" value="{{ $book->book_detail}}">
-                            概要：{{$book->book_detail}}
+                            <label for="text" class="form-label">概要</label>
+                            <input class="form-control" value="{{ $book->book_detail}}" type="text" name="book_detail">
                         </div>
                         <div class="mb-3">
-                            <input type="hidden" name="book_author" value="{{ $book->book_author}}">
-                            著者：{{$book->book_author}}
+                            <label for="text" class="form-label">著者</label>
+                            <input class="form-control" value="{{ $book->book_author}}" type="text" name="book_author">
                         </div>
                         <div class="mb-3">
-                            <input type="hidden" name="book_publishedDate" value="{{ $book->book_publishedDate}}">
-                            出版日：{{$book->book_publishedDate}}
+                            <label for="text" class="form-label">出版日</label>
+                            <input class="form-control" value="{{ $book->book_publishedDate}}" type="text" name="book_publishedDate">
                         </div>
                         <input class="float-right btn btn-primary" type="submit" value="登録する">
                     </form>

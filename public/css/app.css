@@ -10276,6 +10276,32 @@ h3 {
   transform: translate(0, -5px);
 }
 
+.selectbook-wrapper p {
+  font-weight: 550;
+  text-align: center;
+  color: #555555;
+}
+.selectbook-wrapper .selectbooks button {
+  border: none;
+  background-color: white;
+}
+.selectbook-wrapper .selectbooks img {
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+  transition: all 0.2s;
+}
+.selectbook-wrapper .selectbooks img:hover {
+  box-shadow: 0 5px 10px black;
+  transform: translate(0, -5px);
+}
+.selectbook-wrapper .selectbooks .no-result {
+  transition: all 0.2s;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+}
+.selectbook-wrapper .selectbooks .no-result:hover {
+  box-shadow: 0 5px 10px black;
+  transform: translate(0, -5px);
+}
+
 .members-wrapper a {
   text-decoration: none;
   color: #555555;

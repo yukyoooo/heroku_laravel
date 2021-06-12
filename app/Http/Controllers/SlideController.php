@@ -57,9 +57,10 @@ class SlideController extends Controller
         $slide->book_publishedDate = $request->book_publishedDate;
         $slide->output = $request->book_output;
         $slide->image_path = $request->book_img;
-        // dd($slide);
         $slide->slides_path = SendToS3::sendPDF($request->file('slides_pdf'));
-
+        if(null !== $request->file('upload_book_img')){
+            $slide->image_path = SendToS3::sendImage($request->file('upload_book_img'));
+        }
         $slide->save();
         $slide->tags()->attach(request()->tags);
 

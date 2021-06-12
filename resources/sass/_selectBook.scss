@@ -1,3 +1,32 @@
 .selectbook-wrapper{
-    // padding-bottom: 300px;
+
+    p{
+        font-weight:550;
+        text-align: center;
+        color:#555555;
+    }
+
+    .selectbooks{
+        button{
+            border:none;
+            background-color: white;
+        }
+        img{
+        box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
+        transition: all 0.2s;
+        }
+        img:hover{
+            box-shadow: 0 5px 10px black;
+            transform: translate(0, -5px);
+        }
+
+        .no-result{
+        transition: all 0.2s;
+        box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
+        &:hover{
+            box-shadow: 0 5px 10px black;
+            transform: translate(0, -5px);
+        }
+        }
+    }
 }
