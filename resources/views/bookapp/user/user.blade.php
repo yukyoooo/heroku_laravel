@@ -2,41 +2,36 @@
 
 @section('content')
 <div class="container">
-    <div class="row justify-content-center">
-        <div class="col-12">
-            @foreach($users as $user)
-            <form method="GET" action="{{ route('bookapp.user.show', ['id' => $user->id ]) }}">
-            @csrf
-                <div class="card rounded-3 d-flex flex-row bd-highlight mb-3">
-                    <div class="pl-4 p-1 flex-fill bd-highlight">
-                        <div id="emailHelp" class="form-text">Name(nickname)</div>
+    <div class="row justify-content-center members-wrapper">
+        @foreach($users as $user)
+        <div class="col-3" style="margin-top:30px;">
+            <a href="{{ route('bookapp.user.show', ['id' => $user->id ]) }}">
+                <div class="card  members">
+                    <div class="card-body">
                         <h5 class="card-title">
-                        @if($user->nickname)
-                            {{ $user->nickname}}
-                        @else
-                            {{ $user->name }}
-                        @endif</h5>
-                    </div>
-                    <div class="p-1 flex-fill bd-highlight">
-                        <div id="emailHelp" class="form-text">Favorite book</div>
-                        <h5 class="card-title">{{ $user->favorite_book }}</h5>
-                    </div>
-                    <div class="p-1 flex-fill bd-highlight">
-                        <div id="emailHelp" class="form-text">Favorite book2</div>
-                        <h5 class="card-title">{{ $user->favorite_book2 }}</h5>
-                    </div>
-                    <div class="p-1 flex-fill bd-highlight">
-                        <div id="emailHelp" class="form-text">Favorite book3</div>
-                        <h5 class="card-title">{{ $user->favorite_book3 }}</h5>
-                    </div>
-                    <div class="p-2 pr-4 float-right" >
-                        <input class="btn btn-primary btn-lg" type="submit" value="詳細を見る">
+                            @if($user->nickname)
+                                {{ $user->nickname}}
+                            @else
+                                {{ $user->name }}
+                            @endif</h5>
+                        <p class="card-text">
+                            @if($user->introduction)
+                                {{ Str::limit($user->introduction, 100, '(…)' ) }}
+                            @else
+                                @if($user->nickname)
+                                    {{ $user->nickname}}
+                                @else
+                                    {{ $user->name }}
+                                @endif
+                                だよ。よろしくね。<br>いっぱい本を読もう♪
+                            @endif
+                        </p>
                     </div>
                 </div>
-            </form>
-            @endforeach
-            {{ $users->links() }}
+            </a>
         </div>
+        @endforeach
+        {{ $users->links() }}
     </div>
 </div>
 @endsection
