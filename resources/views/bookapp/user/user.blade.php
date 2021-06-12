@@ -16,7 +16,7 @@
                             @endif</h5>
                         <p class="card-text">
                             @if($user->introduction)
-                                {{ Str::limit($user->introduction, 100, '(…)' ) }}
+                                {{ Str::limit($user->introduction, 65, '(…)' ) }}
                             @else
                                 @if($user->nickname)
                                     {{ $user->nickname}}
