@@ -1,0 +1,38 @@
+
+.member-wrapper{
+    text-align: center;
+    color:#555555;
+    h5{
+        font-size: 36px;
+        font-weight: bold;
+        padding:5px 0 30px 0;
+    }
+    span{
+        border-bottom: 5px solid $brown;
+    }
+    .book-introduce{
+        p{
+            padding: 3px;
+            font-weight: 600;
+        }
+    }
+    .introduce{
+        margin-top:50px;
+    }
+    .btn-wrapper{
+        margin-top:50px;
+        a{
+            padding: 10px 40px;
+        }
+    }
+}
+
+.member-slides{
+    h5{
+        color:#555555;
+        font-weight: 600;
+        font-size: 20px;
+        margin-top:50px;
+        margin-bottom: -60px;
+    }
+}

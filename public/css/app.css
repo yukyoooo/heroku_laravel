@@ -10093,6 +10093,20 @@ h3 {
   }
 }
 
+.page-item.active .page-link {
+  z-index: 3;
+  color: #fff;
+  background-color: #b3642b;
+  border-color: #b3642b;
+}
+
+.page-link {
+  color: #b3642b;
+}
+.page-link:hover {
+  color: #b3642b;
+}
+
 .top-image {
   background: url("../images/top.jpg");
   height: 550px;
@@ -10324,6 +10338,46 @@ h3 {
 .members-wrapper .members .card-body p {
   padding: 0;
   font-size: 12px;
+}
+
+.member-wrapper {
+  text-align: center;
+  color: #555555;
+}
+.member-wrapper h5 {
+  font-size: 36px;
+  font-weight: bold;
+  padding: 5px 0 30px 0;
+}
+.member-wrapper span {
+  border-bottom: 5px solid #b3642b;
+}
+.member-wrapper .book-introduce p {
+  padding: 3px;
+  font-weight: 600;
+}
+.member-wrapper .introduce {
+  margin-top: 50px;
+}
+.member-wrapper .btn-wrapper {
+  margin-top: 50px;
+}
+.member-wrapper .btn-wrapper a {
+  padding: 10px 40px;
+}
+
+.member-slides h5 {
+  color: #555555;
+  font-weight: 600;
+  font-size: 20px;
+  margin-top: 50px;
+  margin-bottom: -60px;
+}
+
+.comments-wrapper h2 {
+  color: #555555;
+  font-weight: 600;
+  font-size: 20px;
 }
 
 footer {

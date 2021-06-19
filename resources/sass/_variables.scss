@@ -93,3 +93,15 @@ $brown: #b3642b;
 
 }
 
+.page-item.active .page-link {
+    z-index: 3;
+    color: #fff;
+    background-color: $brown;
+    border-color: $brown;
+}
+.page-link{
+    color:$brown;
+    &:hover{
+        color:$brown;
+    }
+}

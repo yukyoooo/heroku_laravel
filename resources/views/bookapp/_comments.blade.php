@@ -5,7 +5,7 @@
     </div>
 @endif
 
-<section class="col-10">
+<section class="col-10 comments-wrapper">
 
     @auth
     <form style="margin-top:50px;" method="POST" action="{{ route('comment.store') }}">
@@ -46,6 +46,5 @@
             </p>
         </div>
     @empty
-        <p>コメントはまだありません。</p>
     @endforelse
 </section>
