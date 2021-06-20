@@ -82,7 +82,7 @@
                 <a class="" href="{{ route('bookapp.slide.booklist') }}"><span>{{ __('BookList') }}</span></a>
                 <a class="" href="{{ route('bookapp.user.user') }}"><span>{{ __('Members') }}</span></a>
                 <a class="" href="{{ route('bookapp.slide.create') }}"><span>{{ __('Create') }}</span></a>
-                <a class="" href="{{ route('bookapp.slide.todolist') }}"><span>{{ __('todolist') }}</span></a>
+                <a class="" href="{{ route('bookapp.slide.todolist') }}"><span>{{ __('RoadMap') }}</span></a>
             </div>
         </div>
     </footer>
