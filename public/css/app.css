@@ -10366,7 +10366,7 @@ h3 {
   padding: 10px 40px;
 }
 
-.member-slides h5 {
+.member-slides .member-slides-h5 {
   color: #555555;
   font-weight: 600;
   font-size: 20px;
