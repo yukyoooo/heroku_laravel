@@ -70,6 +70,9 @@ Route::prefix('portfolio')->group(function () {
 
 Auth::routes();
 
+
 Route::get('/{any}', function(){
-    return view('app');
+    return view('welcome');
 })->where('any', '.*'); //補足：.*は、正規表現で0文字以上の任意の文字列を意味する
+
+

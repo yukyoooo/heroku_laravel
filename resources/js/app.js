@@ -1,16 +1,27 @@
-/**
- * First we will load all of this project's JavaScript dependencies which
- * includes React and other helpers. It's a great starting point while
- * building robust, powerful web applications using React + Laravel.
- */
-
 require('./bootstrap');
-
-/**
- * Next, we will create a fresh React component instance and attach it to
- * the page. Then, you may begin adding components to this application
- * or customize the JavaScript scaffolding to fit your unique needs.
- */
-
-require('./components/App');
 require('./likebutton');
+require('./components/CreateBook');
+
+import React from 'react';
+import ReactDOM from 'react-dom';
+import thunk from 'redux-thunk';
+import { compose, createStore, applyMiddleware } from 'redux';
+import { Provider } from 'react-redux';
+import App from './components/App';
+import reducer from './reducers'
+
+
+const store = createStore(
+    reducer,
+    compose(
+        applyMiddleware(thunk),
+        process.env.NODE_ENV === 'development' && window.devToolsExtension ? window.devToolsExtension() : f => f)
+);
+
+if (document.getElementById('app')) {
+    ReactDOM.render((
+        <Provider store={store}>
+            <App />
+        </Provider>
+    ), document.getElementById('app'));
+}

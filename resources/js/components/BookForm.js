@@ -1,19 +1,24 @@
-@extends('bookapp.layout')
+import React from 'react';
 
-@section('content')
-<div class="container selectbook-wrapper">
-    <div class="row justify-content-center">
-        <div class="col-11">
-            <div id="app"></div>
-            <!-- <form action="{{ route('bookapp.slide.selectBook') }}" method="get" enctype="multipart/form-data">
+const BookForm = () => {
+    return (
+        <div>
+            <div className="input-group mb-3">
+                    <span className="input-group-text" id="inputGroup-sizing-default">書籍名</span>
+                    {/* <input type="text" class="form-control" name="keyword" aria-label="Sizing example input" value="{{ $books['keyword'] }}" aria-describedby="inputGroup-sizing-default"> */}
+                    <button className="btn btn-outline-secondary" type="submit" id="button-addon2">検索する</button>
+            </div>
+            {/* <form action="{{ route('bookapp.slide.selectBook') }}" method="get" enctype="multipart/form-data">
                 <div class="input-group mb-3">
                     <span class="input-group-text" id="inputGroup-sizing-default">書籍名</span>
                     <input type="text" class="form-control" name="keyword" aria-label="Sizing example input" value="{{ $books['keyword'] }}" aria-describedby="inputGroup-sizing-default">
                     <button class="btn btn-outline-secondary" type="submit" id="button-addon2">検索する</button>
                 </div>
-            </form>
+            </form> */}
 
-            @if ($books['items'] == null)
+
+                <p style={{height:330}}>書籍名を入力してください。</p>
+            {/* @if ($books['items'] == null)
                 <p style="height:330px;">書籍名を入力してください。</p>
             @else (count($books['items']) > 0)
                 <p>「{{ $books['keyword'] }}」の検索結果です。読んだ本を選択してください</p>
@@ -53,9 +58,9 @@
                         </form>
                     </div>
                 </div>
-            @endif -->
-
+            @endif */}
         </div>
-    </div>
-</div>
-@endsection
+    )
+}
+
+export default BookForm;
