@@ -2264,9 +2264,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "FETCH_BOOKS_REQUEST": () => (/* binding */ FETCH_BOOKS_REQUEST),
 /* harmony export */   "FETCH_BOOKS_SUCCESS": () => (/* binding */ FETCH_BOOKS_SUCCESS),
 /* harmony export */   "FETCH_BOOKS_FAILURE": () => (/* binding */ FETCH_BOOKS_FAILURE),
+/* harmony export */   "FETCH_USERS_TAGS_REQUEST": () => (/* binding */ FETCH_USERS_TAGS_REQUEST),
+/* harmony export */   "FETCH_USERS_TAGS_SUCCESS": () => (/* binding */ FETCH_USERS_TAGS_SUCCESS),
+/* harmony export */   "FETCH_USERS_TAGS_FAILURE": () => (/* binding */ FETCH_USERS_TAGS_FAILURE),
 /* harmony export */   "editValue": () => (/* binding */ editValue),
 /* harmony export */   "bookRegisterModal": () => (/* binding */ bookRegisterModal),
-/* harmony export */   "searchBooks": () => (/* binding */ searchBooks)
+/* harmony export */   "searchBooks": () => (/* binding */ searchBooks),
+/* harmony export */   "getUserTags": () => (/* binding */ getUserTags)
 /* harmony export */ });
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
@@ -2276,7 +2280,10 @@ var EDIT_VALUE = 'form/EDIT_VALUE';
 var TOGGLE_BOOK_REGISTER_MODAL = 'bookRegisterModal/TOGGLE';
 var FETCH_BOOKS_REQUEST = "books/FETCH/request";
 var FETCH_BOOKS_SUCCESS = "books/FETCH/success";
-var FETCH_BOOKS_FAILURE = "books/FETCH/failure"; // Action Creators
+var FETCH_BOOKS_FAILURE = "books/FETCH/failure";
+var FETCH_USERS_TAGS_REQUEST = "create/FETCH/request";
+var FETCH_USERS_TAGS_SUCCESS = "create/FETCH/success";
+var FETCH_USERS_TAGS_FAILURE = "create/FETCH/failure"; // Action Creators
 
 var editValue = function editValue(name, value) {
   return {
@@ -2324,6 +2331,39 @@ var searchBooks = function searchBooks(searchWord) {
       console.log(response.data.items);
     })["catch"](function (error) {
       dispatch(failureSearchBooks(error));
+    });
+  };
+};
+
+var requestUserTags = function requestUserTags() {
+  return {
+    type: FETCH_USERS_TAGS_REQUEST
+  };
+};
+
+var successUserTags = function successUserTags(data) {
+  return {
+    type: FETCH_USERS_TAGS_SUCCESS,
+    payload: data
+  };
+};
+
+var failureUserTags = function failureUserTags(error) {
+  return {
+    type: FETCH_USERS_TAGS_FAILURE,
+    error: error
+  };
+};
+
+var getUserTags = function getUserTags() {
+  return function (dispatch) {
+    dispatch(requestUserTags());
+    axios__WEBPACK_IMPORTED_MODULE_0___default().get('/api/posts').then(function (response) {
+      dispatch(successUserTags(response));
+      console.log('Usersとtagsのデータを取得しました。');
+      console.log(response);
+    })["catch"](function (error) {
+      dispatch(failureUserTags(error));
     });
   };
 };
@@ -2490,6 +2530,7 @@ var App = /*#__PURE__*/function (_React$Component) {
     key: "handleClick",
     value: function handleClick(e) {
       this.props.searchBooks(e.target.value);
+      this.props.getUserTags();
     }
   }, {
     key: "existBookList",
@@ -2545,7 +2586,9 @@ var App = /*#__PURE__*/function (_React$Component) {
       var _this2 = this;
 
       return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_components_BookRegisterModal__WEBPACK_IMPORTED_MODULE_3__.default, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_components_BookRegisterModal__WEBPACK_IMPORTED_MODULE_3__.default, {
+          books: this.props.searchedBooks
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
           className: "input-group mb-3",
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("span", {
             className: "input-group-text",
@@ -2600,6 +2643,9 @@ var madDispatch = function madDispatch(dispatch) {
     },
     showRegisterBookModal: function showRegisterBookModal(index) {
       return dispatch((0,_Actions__WEBPACK_IMPORTED_MODULE_2__.bookRegisterModal)(true, index));
+    },
+    getUserTags: function getUserTags() {
+      return dispatch((0,_Actions__WEBPACK_IMPORTED_MODULE_2__.getUserTags)());
     }
   };
 };
@@ -2663,11 +2709,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
-/* harmony import */ var rodal__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! rodal */ "./node_modules/rodal/lib/rodal.esm.js");
-/* harmony import */ var rodal_lib_rodal_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! rodal/lib/rodal.css */ "./node_modules/rodal/lib/rodal.css");
-/* harmony import */ var _Actions__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../Actions */ "./resources/js/Actions.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var rodal__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! rodal */ "./node_modules/rodal/lib/rodal.esm.js");
+/* harmony import */ var rodal_lib_rodal_css__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! rodal/lib/rodal.css */ "./node_modules/rodal/lib/rodal.css");
+/* harmony import */ var _Actions__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../Actions */ "./resources/js/Actions.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+
 
 
 
@@ -2676,18 +2724,132 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var BookRegisterModal = function BookRegisterModal(props) {
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(rodal__WEBPACK_IMPORTED_MODULE_1__.default, {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)(rodal__WEBPACK_IMPORTED_MODULE_2__.default, {
     visible: props.visibility,
     onClose: props.close,
     animation: 'zoom',
-    children: [console.log(props.visibility), console.log(props.index), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("h4", {
-      children: "\u30D7\u30ED\u30D5\u30A3\u30FC\u30EB"
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("button", {
+    height: 620,
+    width: 700,
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("h5", {
+      children: "\u65B0\u898F\u767B\u9332"
+    }), console.log('usersの出力結果'), console.log(props.users), console.log(props.tags), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+      className: "mb-3",
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("label", {
+        className: "form-label",
+        children: "PPT\u306EPDF(\u5FC5\u9808)"
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("input", {
+        className: "form-control",
+        type: "file",
+        id: "formFile",
+        name: "slides_pdf"
+      })]
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+      className: "mb-3",
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("label", {
+        className: "form-label",
+        children: "\u5B66\u3093\u3060\u3053\u3068"
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("textarea", {
+        type: "text",
+        name: "book_output",
+        className: "form-control"
+      })]
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+      className: "mb-3",
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("label", {
+        className: "form-label",
+        children: "\u30BF\u30B0"
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
+        className: "d-flex flex-row",
+        children: props.tags.map(function (tag, index) {
+          return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+            className: "form-check flex-fill",
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("input", {
+              className: "form-check-input",
+              name: "tags[]",
+              type: "checkbox",
+              value: tag.name,
+              id: "flexCheckDefault"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("label", {
+              className: "form-check-label",
+              children: tag.name
+            })]
+          }, index);
+        })
+      })]
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
+      className: "mb-2",
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("select", {
+        className: "form-select",
+        "aria-label": "Default select example",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("option", {
+          selected: true,
+          children: "\u6295\u7A3F\u8005\u3092\u9078\u3093\u3067\u304F\u3060\u3055\u3044"
+        }), props.users.map(function (user, index) {
+          return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("option", {
+            value: user.name,
+            children: user.name
+          }, index);
+        })]
+      })
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("p", {
+      className: "small text-muted font-weight-normal",
+      children: "------------------------------------\u4EE5\u4E0B\u81EA\u52D5\u53D6\u5F97------------------------------------"
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+      className: "d-flex flex-row",
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+        className: "mb-3 flex-fill",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("label", {
+          className: "form-label",
+          children: "\u30BF\u30A4\u30C8\u30EB"
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("input", {
+          className: "form-control",
+          value: props.visibility && props.books[props.index].volumeInfo.title,
+          type: "text",
+          name: "book_title"
+        })]
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+        className: "mb-3 ml-2 flex-fill",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("label", {
+          className: "form-label",
+          children: "\u6982\u8981"
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("input", {
+          className: "form-control",
+          value: props.visibility ? props.books[props.index].volumeInfo.description : '',
+          type: "text",
+          name: "book_detail"
+        })]
+      })]
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+      className: "d-flex flex-row",
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+        className: "mb-3 flex-fill",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("label", {
+          className: "form-label",
+          children: "\u8457\u8005"
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("input", {
+          className: "form-control",
+          value: props.visibility && props.books[props.index].volumeInfo.authors.join('.  '),
+          type: "text",
+          name: "book_author"
+        })]
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+        className: "mb-3 ml-2 flex-fill",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("label", {
+          className: "form-label",
+          children: "\u51FA\u7248\u65E5"
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("input", {
+          className: "form-control",
+          value: props.visibility ? props.books[props.index].volumeInfo.publishedDate : '',
+          type: "text",
+          name: "book_publishedDate"
+        })]
+      })]
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("button", {
         type: "button",
-        className: "btn btn-primary" // onClick={props.fetchProfileWithPrompt}
-        ,
-        children: "\u66F4\u65B0"
+        className: "btn btn-primary",
+        onClick: props.getUserTags,
+        children: "\u767B\u9332"
       })
     })]
   });
@@ -2697,19 +2859,21 @@ var mapState = function mapState(state) {
   return {
     visibility: state.bookRegisterModal.visibility,
     index: state.bookRegisterModal.index,
-    searchedBooks: state.searchBooks.books
+    searchedBooks: state.searchBooks.books,
+    users: state.getUserTags.users,
+    tags: state.getUserTags.tags
   };
 };
 
 var mapDispatch = function mapDispatch(dispatch) {
   return {
     close: function close() {
-      return dispatch((0,_Actions__WEBPACK_IMPORTED_MODULE_3__.bookRegisterModal)(false, 0));
+      return dispatch((0,_Actions__WEBPACK_IMPORTED_MODULE_4__.bookRegisterModal)(false, 0));
     }
   };
 };
 
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,react_redux__WEBPACK_IMPORTED_MODULE_0__.connect)(mapState, mapDispatch)(BookRegisterModal));
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,react_redux__WEBPACK_IMPORTED_MODULE_1__.connect)(mapState, mapDispatch)(BookRegisterModal));
 
 /***/ }),
 
@@ -2913,6 +3077,64 @@ var form = function form() {
 
 /***/ }),
 
+/***/ "./resources/js/reducers/getUserTags.js":
+/*!**********************************************!*\
+  !*** ./resources/js/reducers/getUserTags.js ***!
+  \**********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _Actions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../Actions */ "./resources/js/Actions.js");
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+
+var initialState = {
+  loading: false,
+  users: [],
+  tags: [],
+  error: null
+};
+
+var getUserTags = function getUserTags() {
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialState;
+  var action = arguments.length > 1 ? arguments[1] : undefined;
+
+  switch (action.type) {
+    case _Actions__WEBPACK_IMPORTED_MODULE_0__.FETCH_USERS_TAGS_REQUEST:
+      return _objectSpread(_objectSpread({}, state), {}, {
+        loading: true
+      });
+
+    case _Actions__WEBPACK_IMPORTED_MODULE_0__.FETCH_USERS_TAGS_SUCCESS:
+      return _objectSpread(_objectSpread({}, state), {}, {
+        loading: false,
+        users: action.payload.data.user,
+        tags: action.payload.data.tags
+      });
+
+    case _Actions__WEBPACK_IMPORTED_MODULE_0__.FETCH_USERS_TAGS_FAILURE:
+      return _objectSpread(_objectSpread({}, state), {}, {
+        loading: false,
+        error: action.error
+      });
+
+    default:
+      return state;
+  }
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (getUserTags);
+
+/***/ }),
+
 /***/ "./resources/js/reducers/index.js":
 /*!****************************************!*\
   !*** ./resources/js/reducers/index.js ***!
@@ -2924,18 +3146,21 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var redux__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! redux */ "./node_modules/redux/es/redux.js");
+/* harmony import */ var redux__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! redux */ "./node_modules/redux/es/redux.js");
 /* harmony import */ var _searchBooks__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./searchBooks */ "./resources/js/reducers/searchBooks.js");
 /* harmony import */ var _form__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./form */ "./resources/js/reducers/form.js");
 /* harmony import */ var _bookRegisterModal__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./bookRegisterModal */ "./resources/js/reducers/bookRegisterModal.js");
+/* harmony import */ var _getUserTags__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./getUserTags */ "./resources/js/reducers/getUserTags.js");
 
 
 
 
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,redux__WEBPACK_IMPORTED_MODULE_3__.combineReducers)({
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,redux__WEBPACK_IMPORTED_MODULE_4__.combineReducers)({
   searchBooks: _searchBooks__WEBPACK_IMPORTED_MODULE_0__.default,
   form: _form__WEBPACK_IMPORTED_MODULE_1__.default,
-  bookRegisterModal: _bookRegisterModal__WEBPACK_IMPORTED_MODULE_2__.default
+  bookRegisterModal: _bookRegisterModal__WEBPACK_IMPORTED_MODULE_2__.default,
+  getUserTags: _getUserTags__WEBPACK_IMPORTED_MODULE_3__.default
 }));
 
 /***/ }),

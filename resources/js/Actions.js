@@ -6,6 +6,9 @@ export const TOGGLE_BOOK_REGISTER_MODAL = 'bookRegisterModal/TOGGLE';
 export const FETCH_BOOKS_REQUEST = "books/FETCH/request";
 export const FETCH_BOOKS_SUCCESS = "books/FETCH/success";
 export const FETCH_BOOKS_FAILURE = "books/FETCH/failure";
+export const FETCH_USERS_TAGS_REQUEST = "create/FETCH/request";
+export const FETCH_USERS_TAGS_SUCCESS = "create/FETCH/success";
+export const FETCH_USERS_TAGS_FAILURE = "create/FETCH/failure";
 
 // Action Creators
 export const editValue = (name, value) => {
@@ -40,3 +43,28 @@ export const searchBooks = (searchWord) => {
             });
     };
 };
+
+const requestUserTags = () => {
+    return { type: FETCH_USERS_TAGS_REQUEST};
+}
+const successUserTags = (data) => {
+    return { type: FETCH_USERS_TAGS_SUCCESS, payload: data};
+}
+const failureUserTags = (error) => {
+    return { type: FETCH_USERS_TAGS_FAILURE, error };
+}
+export const getUserTags = () => {
+    return (dispatch) => {
+        dispatch(requestUserTags());
+        axios
+            .get('/api/posts')
+            .then(response => {
+                dispatch(successUserTags(response));
+                console.log('Usersとtagsのデータを取得しました。');
+                console.log(response);
+            })
+            .catch(error => {
+                dispatch(failureUserTags(error));
+            })
+    }
+}

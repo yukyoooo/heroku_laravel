@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { searchBooks, editValue, bookRegisterModal} from '../Actions';
+import { searchBooks, editValue, bookRegisterModal, getUserTags} from '../Actions';
 import BookRegisterModal from '../components/BookRegisterModal';
 
 
@@ -20,6 +20,7 @@ class App extends React.Component {
 
     handleClick(e) {
         this.props.searchBooks(e.target.value);
+        this.props.getUserTags();
     }
 
     existBookList (items) {
@@ -54,7 +55,7 @@ class App extends React.Component {
         return (
 
             <div>
-                <BookRegisterModal />
+                <BookRegisterModal books={this.props.searchedBooks}/>
                 <div className="input-group mb-3">
                     <span className="input-group-text" id="inputGroup-sizing-default">書籍名</span>
                     {/* <input type="text" class="form-control" name="keyword" aria-label="Sizing example input" value="{{ $books['keyword'] }}" aria-describedby="inputGroup-sizing-default"> */}
@@ -99,6 +100,8 @@ const madDispatch = (dispatch) => {
             dispatch(editValue(name, value));
         },
         showRegisterBookModal: (index) => dispatch(bookRegisterModal(true, index)),
+        getUserTags: () => dispatch(getUserTags()),
+
     }
 }
 export default connect(mapState, madDispatch)(App);
