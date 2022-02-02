@@ -3,11 +3,8 @@
 
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\SlideController;
-use App\Http\Controllers\ContactFormController;
 use App\Http\Controllers\CommentsController;
 use App\Http\Controllers\LikeController;
-use App\Http\Controllers\ThingController;
-use App\Http\Controllers\PdfController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -45,28 +42,6 @@ Route::middleware(['auth'])->prefix('mypage')->group(function () {
 
 //いいね機能
 Route::post('/like', [LikeController::class, 'like'])->name('like.like');
-
-//contactform
-Route::middleware(['auth'])->prefix('contact')->group(function () {
-    Route::get('/index', [ContactFormController::class, 'index'])->name('contact.index');
-    Route::get('/create', [ContactFormController::class, 'create'])->name('contact.create');
-    Route::post('/store', [ContactFormController::class, 'store'])->name('contact.store');
-    Route::get('/show/{id}', [ContactFormController::class, 'show'])->name('contact.show');
-    Route::get('/edit/{id}', [ContactFormController::class, 'edit'])->name('contact.edit');
-    Route::post('/update/{id}', [ContactFormController::class, 'update'])->name('contact.update');
-    Route::post('/destroy/{id}', [ContactFormController::class, 'destroy'])->name('contact.destroy');
-});
-
-
-// 趣味ポートフォリオ
-Route::prefix('portfolio')->group(function () {
-    Route::get('/', [ThingController::class, 'index'])->name('thing.index');
-    Route::middleware('auth')->post('/create', [ThingController::class, 'store'])->name('thing.store');
-    Route::middleware('auth')->get('/{thing}', [ThingController::class, 'edit'])->name('thing.edit');
-    Route::middleware('auth')->put('/{thing}', [ThingController::class, 'update'])->name('thing.update');
-    Route::middleware('auth')->delete('/{thing}', [ThingController::class, 'destroy'])->name('thing.destroy');
-    Route::middleware('auth')->delete('/{thing}', [ThingController::class, 'destroy'])->name('thing.destroy');
-});
 
 Auth::routes();
 
